@@ -1,0 +1,324 @@
+{
+  "name": "Generated (2026-02-28 04:12)",
+  "description": "AI-generated mock data for AgenteComplianceRegulatorio",
+  "source_type": "generated",
+  "is_active": false,
+  "web_actions": {
+    "consultarLimitesInversion": [
+      {
+        "scenario": "edge_case",
+        "description": "Cliente nuevo sin historial de inversiones",
+        "response_status": 200,
+        "request_body": {
+          "customer_id": "CL-20240120-0999",
+          "product_type": "DEPOSITO_PLAZO",
+          "requested_amount": "S/ 1000.00"
+        },
+        "response_body": {
+          "success": true,
+          "data": {
+            "customer_id": "CL-20240120-0999",
+            "available_limits": {
+              "daily_limit": "S/ 50,000.00",
+              "monthly_limit": "S/ 200,000.00",
+              "annual_limit": "S/ 500,000.00",
+              "product_specific_limit": "S/ 1,000,000.00"
+            },
+            "current_usage": {
+              "daily_used": "S/ 0.00",
+              "monthly_used": "S/ 0.00",
+              "annual_used": "S/ 0.00",
+              "product_used": "S/ 0.00"
+            },
+            "remaining_limits": {
+              "daily_remaining": "S/ 50,000.00",
+              "monthly_remaining": "S/ 200,000.00",
+              "annual_remaining": "S/ 500,000.00",
+              "product_remaining": "S/ 1,000,000.00"
+            },
+            "request_status": "DENTRO_DE_LIMITES",
+            "customer_status": "NUEVO",
+            "special_conditions": [
+              "Límites reducidos para cliente nuevo",
+              "Incremento automático después de 6 meses"
+            ],
+            "regulatory_basis": [
+              "POLITICAS_CLIENTES_NUEVOS_INTERBANK"
+            ],
+            "next_review_date": "2024-07-20T00:00:00-05:00"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Monto solicitado excede los límites regulatorios",
+        "response_status": 400,
+        "request_body": {
+          "customer_id": "CL-20240110-0456",
+          "product_type": "RENTA_VARIABLE",
+          "requested_amount": "S/ 1500000.00"
+        },
+        "response_body": {
+          "success": false,
+          "error": {
+            "code": "LIMIT_EXCEEDED",
+            "message": "El monto solicitado excede los límites regulatorios establecidos",
+            "details": "La inversión solicitada de S/ 1,500,000.00 supera el límite anual disponible de S/ 800,000.00",
+            "limit_violations": [
+              {
+                "limit_type": "ANUAL",
+                "limit_value": "S/ 1,000,000.00",
+                "current_usage": "S/ 200,000.00",
+                "requested_amount": "S/ 1,500,000.00",
+                "excess_amount": "S/ 700,000.00"
+              }
+            ],
+            "regulatory_reference": "SBS_CIRCULAR_G-140-2009_ART_25",
+            "timestamp": "2024-01-20T17:30:00-05:00"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Consulta exitosa de límites de inversión disponibles",
+        "response_status": 200,
+        "request_body": {
+          "customer_id": "CL-20231101-0001",
+          "product_type": "FONDO_MUTUO",
+          "requested_amount": "S/ 75000.00"
+        },
+        "response_body": {
+          "success": true,
+          "data": {
+            "customer_id": "CL-20231101-0001",
+            "available_limits": {
+              "daily_limit": "S/ 100,000.00",
+              "monthly_limit": "S/ 500,000.00",
+              "annual_limit": "S/ 2,000,000.00",
+              "product_specific_limit": "S/ 800,000.00"
+            },
+            "current_usage": {
+              "daily_used": "S/ 25,000.00",
+              "monthly_used": "S/ 150,000.00",
+              "annual_used": "S/ 450,000.00",
+              "product_used": "S/ 200,000.00"
+            },
+            "remaining_limits": {
+              "daily_remaining": "S/ 75,000.00",
+              "monthly_remaining": "S/ 350,000.00",
+              "annual_remaining": "S/ 1,550,000.00",
+              "product_remaining": "S/ 600,000.00"
+            },
+            "request_status": "DENTRO_DE_LIMITES",
+            "regulatory_basis": [
+              "SBS_RESOLUCION_11356-2008",
+              "POLITICAS_INTERNAS_INTERBANK"
+            ],
+            "next_reset_dates": {
+              "daily": "2024-01-21T00:00:00-05:00",
+              "monthly": "2024-02-01T00:00:00-05:00",
+              "annual": "2024-12-31T23:59:59-05:00"
+            }
+          }
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "consultarPerfilCliente": [
+      {
+        "scenario": "edge_case",
+        "description": "Cliente con perfil mínimo y KYC pendiente",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "success": true,
+          "data": {
+            "customer_id": "CL-20240115-0789",
+            "full_name": "Juan Carlos Pérez",
+            "document_type": "DNI",
+            "document_number": "12345678",
+            "email": null,
+            "phone": "+51 999888777",
+            "risk_profile": "NO_DEFINIDO",
+            "account_status": "PENDIENTE",
+            "kyc_status": "INCOMPLETO",
+            "last_kyc_update": null,
+            "investment_experience": "NINGUNA",
+            "monthly_income": "S/ 0.00",
+            "net_worth": "S/ 0.00",
+            "occupation": null,
+            "address": null,
+            "regulatory_flags": [
+              "KYC_INCOMPLETO",
+              "PERFIL_RIESGO_PENDIENTE"
+            ],
+            "pep_status": null,
+            "fatca_status": "PENDIENTE"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Cliente no encontrado en el sistema",
+        "response_status": 404,
+        "request_body": {},
+        "response_body": {
+          "success": false,
+          "error": {
+            "code": "CUSTOMER_NOT_FOUND",
+            "message": "Cliente no encontrado en el sistema",
+            "details": "No se pudo localizar el perfil del cliente en la base de datos",
+            "timestamp": "2024-01-20T10:30:00-05:00"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cliente activo con perfil completo",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "success": true,
+          "data": {
+            "customer_id": "CL-20231101-0001",
+            "full_name": "María Elena Rodríguez Vásquez",
+            "document_type": "DNI",
+            "document_number": "43567890",
+            "email": "maria.rodriguez@gmail.com",
+            "phone": "+51 987654321",
+            "risk_profile": "MODERADO",
+            "account_status": "ACTIVO",
+            "kyc_status": "COMPLETO",
+            "last_kyc_update": "2024-01-15",
+            "investment_experience": "INTERMEDIO",
+            "monthly_income": "S/ 8,500.00",
+            "net_worth": "S/ 250,000.00",
+            "occupation": "Ingeniera de Sistemas",
+            "address": {
+              "street": "Av. Javier Prado Este 4200",
+              "district": "Surco",
+              "province": "Lima",
+              "department": "Lima"
+            },
+            "regulatory_flags": [],
+            "pep_status": false,
+            "fatca_status": "NO_APLICA"
+          }
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "verificarRegulacionesProducto": [
+      {
+        "scenario": "edge_case",
+        "description": "Producto con monto mínimo de inversión",
+        "response_status": 200,
+        "request_body": {
+          "product_description": "Depósito a Plazo Fijo 30 días",
+          "investment_amount": "S/ 500.00",
+          "customer_risk_profile": "CONSERVADOR"
+        },
+        "response_body": {
+          "success": true,
+          "data": {
+            "compliance_status": "APROBADO_CON_OBSERVACIONES",
+            "regulatory_checks": [
+              {
+                "regulation": "SBS_CIRCULAR_G-106-2005",
+                "status": "CUMPLE",
+                "description": "Monto mínimo para depósitos a plazo"
+              }
+            ],
+            "required_documents": [
+              "Contrato de depósito a plazo"
+            ],
+            "cooling_period": "0 horas",
+            "maximum_investment": "S/ 1,000,000.00",
+            "warnings": [
+              "Monto cercano al mínimo regulatorio de S/ 500.00"
+            ],
+            "special_conditions": [
+              "Renovación automática disponible",
+              "Sin penalidad por retiro anticipado después de 15 días"
+            ],
+            "approval_date": "2024-01-20T16:00:00-05:00"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Producto no compatible con perfil de riesgo del cliente",
+        "response_status": 400,
+        "request_body": {
+          "product_description": "Fondo de Inversión Renta Variable Internacional",
+          "investment_amount": "S/ 100000.00",
+          "customer_risk_profile": "CONSERVADOR"
+        },
+        "response_body": {
+          "success": false,
+          "error": {
+            "code": "RISK_PROFILE_MISMATCH",
+            "message": "El producto no es compatible con el perfil de riesgo del cliente",
+            "details": "Un cliente con perfil CONSERVADOR no puede invertir en productos de renta variable de alto riesgo",
+            "regulatory_violations": [
+              {
+                "regulation": "SBS_CIRCULAR_G-140-2009_ART_15",
+                "violation": "Incompatibilidad perfil-producto",
+                "severity": "ALTA"
+              }
+            ],
+            "timestamp": "2024-01-20T15:20:00-05:00"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Producto de inversión aprobado según regulaciones",
+        "response_status": 200,
+        "request_body": {
+          "product_description": "Fondo Mutuo Renta Fija Soles",
+          "investment_amount": "S/ 50000.00",
+          "customer_risk_profile": "MODERADO"
+        },
+        "response_body": {
+          "success": true,
+          "data": {
+            "compliance_status": "APROBADO",
+            "regulatory_checks": [
+              {
+                "regulation": "SBS_CIRCULAR_G-140-2009",
+                "status": "CUMPLE",
+                "description": "Límites de inversión en fondos mutuos"
+              },
+              {
+                "regulation": "LEY_26702_ART_221",
+                "status": "CUMPLE",
+                "description": "Adecuación del perfil de riesgo"
+              },
+              {
+                "regulation": "REGLAMENTO_SMV",
+                "status": "CUMPLE",
+                "description": "Requisitos de información al inversionista"
+              }
+            ],
+            "required_documents": [
+              "Declaración de perfil de riesgo",
+              "Contrato de inversión"
+            ],
+            "cooling_period": "24 horas",
+            "maximum_investment": "S/ 500,000.00",
+            "warnings": [],
+            "approval_date": "2024-01-20T14:45:00-05:00"
+          }
+        },
+        "tester_prompt": ""
+      }
+    ]
+  }
+}
