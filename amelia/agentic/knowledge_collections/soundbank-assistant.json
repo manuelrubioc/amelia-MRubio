@@ -1,0 +1,28 @@
+{
+  "collections": [
+    {
+      "name": "Perfil del Cliente - María Elena Rodríguez",
+      "description": "Descripción: Perfil completo del cliente demostrativo incluyendo información personal, cuentas bancarias, tarjetas, préstamos, seguros, inversiones y historial de transacciones. Datos coherentes y consistentes para propósitos de demostración del agente de IA.",
+      "documents": [
+        {
+          "name": "KB11-Datos Mockup del Cliente - Perfil Demostrativo.pdf",
+          "type": "PDF"
+        }
+      ]
+    },
+    {
+      "name": "Productos y Servicios SoundBank",
+      "description": "1. Catálogo de Productos SoundBank Descripción: Información completa sobre todos los productos financieros disponibles incluyendo cuentas de ahorro, corrientes, tarjetas de crédito y débito, préstamos personales, hipotecarios, seguros e inversiones. Incluye requisitos, beneficios, tasas y comisiones. 2. Tarifario y Comisiones 2024 Descripción: Estructura detallada de comisiones por servicios bancarios, mantenimiento de cuentas, transferencias nacionales e internacionales, y operaciones con tarjetas. Actualizado con las tarifas vigentes.",
+      "documents": [
+        {
+          "name": "KB1-Catálogo de Productos SoundBank.pdf",
+          "type": "PDF"
+        },
+        {
+          "name": "KB2-Tarifario y Comisiones SoundBank 2024.pdf",
+          "type": "PDF"
+        }
+      ]
+    }
+  ]
+}

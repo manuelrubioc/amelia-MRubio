@@ -1,0 +1,167 @@
+{
+  "functions": [
+    {
+      "name": "buscarSucursales",
+      "description": "Busca sucursales Bancoppel disponibles según la ubicación del cliente",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "buscarSucursales",
+      "inputParameters": [
+        {
+          "name": "ciudad",
+          "description": "Ciudad donde buscar sucursales",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "codigoPostal",
+          "description": "Código postal para búsqueda más precisa",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "activas",
+          "description": "(auto-detected from web action body)",
+          "type": "BOOLEAN",
+          "required": false
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "sucursales",
+          "description": "Lista de sucursales disponibles",
+          "type": "STRING"
+        },
+        {
+          "name": "totalSucursales",
+          "description": "Número total de sucursales encontradas",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "consultarHorarios",
+      "description": "Consulta horarios disponibles para una sucursal específica",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "consultarHorarios",
+      "inputParameters": [
+        {
+          "name": "sucursalId",
+          "description": "ID de la sucursal seleccionada",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "fecha",
+          "description": "Fecha deseada para la cita",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "horariosDisponibles",
+          "description": "Lista de horarios disponibles",
+          "type": "STRING"
+        },
+        {
+          "name": "asesoresDisponibles",
+          "description": "Lista de asesores disponibles",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "reservarCita",
+      "description": "Reserva una cita con los datos del cliente",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "reservarCita",
+      "inputParameters": [
+        {
+          "name": "nombreCliente",
+          "description": "Nombre completo del cliente",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "telefono",
+          "description": "Número de teléfono del cliente",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "documentoId",
+          "description": "Documento de identidad del cliente",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "sucursalId",
+          "description": "ID de la sucursal",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "fecha",
+          "description": "Fecha de la cita",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "hora",
+          "description": "Hora de la cita",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "asesorId",
+          "description": "ID del asesor asignado",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "numeroConfirmacion",
+          "description": "Número de confirmación de la cita",
+          "type": "STRING"
+        },
+        {
+          "name": "estadoReserva",
+          "description": "Estado de la reserva",
+          "type": "STRING"
+        },
+        {
+          "name": "detallesCita",
+          "description": "Detalles completos de la cita",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "consultarServicios",
+      "description": "Consulta información sobre servicios bancarios disponibles",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "consultarServicios",
+      "inputParameters": [
+        {
+          "name": "tipoServicio",
+          "description": "Tipo de servicio bancario consultado",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "servicios",
+          "description": "Lista de servicios disponibles",
+          "type": "STRING"
+        },
+        {
+          "name": "descripcionServicios",
+          "description": "Descripción detallada de servicios",
+          "type": "STRING"
+        }
+      ]
+    }
+  ]
+}

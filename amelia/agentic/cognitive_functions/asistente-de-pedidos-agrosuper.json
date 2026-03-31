@@ -1,0 +1,148 @@
+{
+  "functions": [
+    {
+      "name": "consultarPedidoProgramado",
+      "description": "Consulta el pedido programado del cliente para la próxima entrega",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "consultarPedidoProgramado",
+      "inputParameters": [
+        {
+          "name": "clienteId",
+          "description": "ID único del cliente",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "fechaEntrega",
+          "description": "Fecha de entrega programada",
+          "type": "STRING",
+          "required": true
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "pedidoActual",
+          "description": "Lista de productos en el pedido actual",
+          "type": "STRING"
+        },
+        {
+          "name": "fechaEntrega",
+          "description": "Fecha de entrega confirmada",
+          "type": "STRING"
+        },
+        {
+          "name": "totalAproximado",
+          "description": "Total aproximado del pedido actual",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "consultarCatalogoProductos",
+      "description": "Consulta catálogo de productos cárnicos y avícolas con precios actuales",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "consultarCatalogoProductos",
+      "inputParameters": [
+        {
+          "name": "categoria",
+          "description": "Categoría de producto (pollo, cerdo, vacuno, cecinas)",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "busqueda",
+          "description": "Término de búsqueda específico",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "productos",
+          "description": "Lista de productos disponibles con precios",
+          "type": "STRING"
+        },
+        {
+          "name": "promociones",
+          "description": "Productos en promoción actual",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "calcularPrecioPublico",
+      "description": "Calcula precio sugerido al público con margen del 30%",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "calcularPrecioPublico",
+      "inputParameters": [
+        {
+          "name": "precioNeto",
+          "description": "Precio neto del producto",
+          "type": "NUMBER",
+          "required": true
+        },
+        {
+          "name": "conIva",
+          "description": "Si el precio incluye IVA",
+          "type": "BOOLEAN",
+          "required": false
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "precioPublico",
+          "description": "Precio sugerido de venta al público",
+          "type": "STRING"
+        },
+        {
+          "name": "margenGanancia",
+          "description": "Margen de ganancia calculado",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "registrarPedido",
+      "description": "Registra o modifica pedido del cliente",
+      "actionType": "CONSUME_WS_ACTION",
+      "consumeWsActionName": "registrarPedido",
+      "inputParameters": [
+        {
+          "name": "clienteId",
+          "description": "ID único del cliente",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "productos",
+          "description": "Lista de productos a agregar o modificar",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "fechaEntrega",
+          "description": "Fecha de entrega solicitada",
+          "type": "STRING",
+          "required": true
+        }
+      ],
+      "outputParameters": [
+        {
+          "name": "pedidoConfirmado",
+          "description": "Confirmación del pedido registrado",
+          "type": "STRING"
+        },
+        {
+          "name": "totalFinal",
+          "description": "Total final del pedido",
+          "type": "STRING"
+        },
+        {
+          "name": "numeroOrden",
+          "description": "Número de orden generado",
+          "type": "STRING"
+        }
+      ]
+    }
+  ]
+}
