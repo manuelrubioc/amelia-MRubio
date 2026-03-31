@@ -1,0 +1,1215 @@
+{
+  "agent": "Asistente de Pedidos Agrosuper",
+  "forge": "Agente Comercial Agrosuper",
+  "data_set": "Generated (2026-02-27 00:31)",
+  "entries": [
+    {
+      "web_action": "calcularPrecioPublico",
+      "scenario": "alt_happy_precio_alto_sin_iva",
+      "description": "Cálculo exitoso de precio público para producto premium sin IVA",
+      "response_status": 200,
+      "tester_prompt": "Calcula el precio público de un producto con precio neto $89.500 sin IVA incluido.",
+      "request_body": {
+        "precioNeto": 89500,
+        "conIva": false
+      },
+      "request_params": [
+        {
+          "name": "precioNeto",
+          "value": "89500"
+        },
+        {
+          "name": "conIva",
+          "value": "false"
+        }
+      ],
+      "response_body": {
+        "margenGanancia": "28.5%",
+        "precioPublico": "$115.015"
+      }
+    },
+    {
+      "web_action": "calcularPrecioPublico",
+      "scenario": "edge_precio_minimo_con_iva",
+      "description": "Cálculo con precio mínimo permitido incluyendo IVA",
+      "response_status": 200,
+      "tester_prompt": "Calcula el precio público de un producto con precio neto de $1 con IVA incluido.",
+      "request_body": {
+        "precioNeto": 1,
+        "conIva": true
+      },
+      "request_params": [
+        {
+          "name": "precioNeto",
+          "value": "1"
+        },
+        {
+          "name": "conIva",
+          "value": "true"
+        }
+      ],
+      "response_body": {
+        "margenGanancia": "25.0%",
+        "precioPublico": "$1"
+      }
+    },
+    {
+      "web_action": "calcularPrecioPublico",
+      "scenario": "error_precio_negativo",
+      "description": "Error por precio neto negativo",
+      "response_status": 400,
+      "tester_prompt": "Intenta calcular el precio público con un precio neto de -$1.500 con IVA.",
+      "request_body": {
+        "precioNeto": -1500,
+        "conIva": true
+      },
+      "request_params": [
+        {
+          "name": "precioNeto",
+          "value": "-1500"
+        },
+        {
+          "name": "conIva",
+          "value": "true"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "PRECIO_INVALIDO",
+        "mensaje": "El precio neto no puede ser negativo",
+        "margenGanancia": null,
+        "precioPublico": null
+      }
+    },
+    {
+      "web_action": "calcularTotalPedido",
+      "scenario": "alt_happy_pedido_mixto",
+      "description": "Cálculo exitoso con productos mixtos y promociones",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_body": {
+        "productos": "AGS-201,AGS-105,AGS-300",
+        "cantidades": "1.5,2,0.8"
+      },
+      "request_params": [
+        {
+          "name": "cantidades",
+          "value": "1.5,2,0.8"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-201,AGS-105,AGS-300"
+        }
+      ],
+      "response_body": {
+        "detalleProductos": [
+          {
+            "codigo": "AGS-201",
+            "nombre": "Lomo Premium",
+            "cantidad": 1.5,
+            "precioUnitario": 8990,
+            "subtotal": 13485
+          },
+          {
+            "codigo": "AGS-105",
+            "nombre": "Pechuga Pollo",
+            "cantidad": 2,
+            "precioUnitario": 4990,
+            "subtotal": 9980
+          },
+          {
+            "codigo": "AGS-300",
+            "nombre": "Cecinas Surtidas",
+            "cantidad": 0.8,
+            "precioUnitario": 3500,
+            "subtotal": 2800
+          }
+        ],
+        "sugerenciaVenta": {
+          "producto": "AGS-310 - Queso Mantecoso",
+          "razon": "Complementa perfectamente con cecinas"
+        },
+        "totalAproximado": 26265,
+        "descuentos": 1315,
+        "totalFinal": 24950
+      }
+    },
+    {
+      "web_action": "calcularTotalPedido",
+      "scenario": "edge_case",
+      "description": "Cálculo con cantidades mínimas",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_body": {
+        "productos": "AGS-001",
+        "cantidades": "0.1"
+      },
+      "request_params": [
+        {
+          "name": "cantidades",
+          "value": "0.1"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-001"
+        }
+      ],
+      "response_body": {
+        "detalleProductos": [
+          {
+            "id": "AGS-001",
+            "nombre": "Pollo Entero Super Fresco",
+            "cantidad": 0.1,
+            "precioUnitario": 3290,
+            "subtotal": 329
+          }
+        ],
+        "sugerenciaVenta": [],
+        "totalAproximado": 329
+      }
+    },
+    {
+      "web_action": "calcularTotalPedido",
+      "scenario": "edge_productos_fraccionados",
+      "description": "Cálculo con productos en cantidades muy pequeñas",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_body": {
+        "productos": "AGS-105,AGS-002",
+        "cantidades": "0.25,0.1"
+      },
+      "request_params": [
+        {
+          "name": "cantidades",
+          "value": "0.25,0.1"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-105,AGS-002"
+        }
+      ],
+      "response_body": {
+        "detalleProductos": [
+          {
+            "codigo": "AGS-105",
+            "nombre": "Pechuga Pollo",
+            "cantidad": 0.25,
+            "precioUnitario": 4990,
+            "subtotal": 1248
+          },
+          {
+            "codigo": "AGS-002",
+            "nombre": "Muslo Pollo",
+            "cantidad": 0.1,
+            "precioUnitario": 2890,
+            "subtotal": 289
+          }
+        ],
+        "sugerenciaVenta": null,
+        "totalAproximado": 1537,
+        "advertencia": "Pedido mínimo recomendado: $5.000 para optimizar costo de envío"
+      }
+    },
+    {
+      "web_action": "calcularTotalPedido",
+      "scenario": "error_cantidad_excesiva",
+      "description": "Error por cantidad que excede límites de pedido",
+      "response_status": 400,
+      "tester_prompt": "",
+      "request_body": {
+        "productos": "AGS-201",
+        "cantidades": "50"
+      },
+      "request_params": [
+        {
+          "name": "cantidades",
+          "value": "50"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-201"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "CANTIDAD_EXCESIVA",
+        "mensaje": "La cantidad solicitada (50kg) excede el límite máximo por pedido (20kg)",
+        "limiteMaximo": 20,
+        "productoAfectado": "AGS-201"
+      }
+    },
+    {
+      "web_action": "calcularTotalPedido",
+      "scenario": "error_case",
+      "description": "Producto no disponible en stock suficiente",
+      "response_status": 400,
+      "tester_prompt": "",
+      "request_body": {
+        "productos": "AGS-003,AGS-004",
+        "cantidades": "10,25"
+      },
+      "request_params": [
+        {
+          "name": "cantidades",
+          "value": "10,25"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-003,AGS-004"
+        }
+      ],
+      "response_body": {
+        "error": "STOCK_INSUFICIENTE",
+        "mensaje": "Stock insuficiente para algunos productos",
+        "detalles": [
+          {
+            "producto": "AGS-004",
+            "solicitado": 25,
+            "disponible": 12
+          }
+        ]
+      }
+    },
+    {
+      "web_action": "calcularTotalPedido",
+      "scenario": "happy_path",
+      "description": "Cálculo exitoso del total del pedido con sugerencias",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_body": {
+        "productos": "AGS-001,AGS-002,AGS-015",
+        "cantidades": "2,1.5,3"
+      },
+      "request_params": [
+        {
+          "name": "cantidades",
+          "value": "2,1.5,3"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-001,AGS-002,AGS-015"
+        }
+      ],
+      "response_body": {
+        "detalleProductos": [
+          {
+            "id": "AGS-001",
+            "nombre": "Pollo Entero Super Fresco",
+            "cantidad": 2,
+            "precioUnitario": 3290,
+            "subtotal": 6580
+          },
+          {
+            "id": "AGS-002",
+            "nombre": "Pechuga de Pollo Deshuesada",
+            "cantidad": 1.5,
+            "precioUnitario": 5890,
+            "subtotal": 8835
+          },
+          {
+            "id": "AGS-015",
+            "nombre": "Chorizo Parrillero",
+            "cantidad": 3,
+            "precioUnitario": 4250,
+            "subtotal": 12750
+          }
+        ],
+        "sugerenciaVenta": [
+          {
+            "id": "AGS-020",
+            "nombre": "Condimento para Pollo",
+            "motivo": "Complementa perfectamente con pollo fresco",
+            "precio": 1890
+          }
+        ],
+        "totalAproximado": 28165
+      }
+    },
+    {
+      "web_action": "confirmarPedido",
+      "scenario": "alt_happy_entrega_programada",
+      "description": "Confirmación exitosa con entrega programada en Valparaíso",
+      "response_status": 201,
+      "tester_prompt": "",
+      "request_body": {
+        "clienteId": "CLI-78901",
+        "pedidoCompleto": "AGS-201:1.5kg,AGS-105:2kg,AGS-300:0.8kg",
+        "fechaEntrega": "2024-02-05"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-78901"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-05"
+        },
+        {
+          "name": "pedidoCompleto",
+          "value": "AGS-201:1.5kg,AGS-105:2kg,AGS-300:0.8kg"
+        }
+      ],
+      "response_body": {
+        "fechaConfirmacion": "2024-01-30T14:25:30-03:00",
+        "numeroPedido": "PED-567890",
+        "resumenPedido": {
+          "cliente": "CLI-78901",
+          "productos": 3,
+          "pesoTotal": "4.3kg",
+          "valorTotal": 24950,
+          "fechaEntrega": "2024-02-05",
+          "horaEntrega": "09:00-12:00",
+          "direccionEntrega": "Valparaíso, V Región",
+          "metodoPago": "transferencia",
+          "codigoSeguimiento": "AGS-567890-VP"
+        }
+      }
+    },
+    {
+      "web_action": "confirmarPedido",
+      "scenario": "edge_case",
+      "description": "Confirmación de pedido con monto mínimo",
+      "response_status": 201,
+      "tester_prompt": "",
+      "request_body": {
+        "clienteId": "CLI-11111",
+        "pedidoCompleto": "AGS-001:0.5kg",
+        "fechaEntrega": "2024-01-29"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-11111"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-29"
+        },
+        {
+          "name": "pedidoCompleto",
+          "value": "AGS-001:0.5kg"
+        }
+      ],
+      "response_body": {
+        "fechaConfirmacion": "2024-01-22T14:45:00-03:00",
+        "numeroPedido": "PED-789016",
+        "resumenPedido": {
+          "cliente": "CLI-11111",
+          "productos": [
+            {
+              "nombre": "Pollo Entero Super Fresco",
+              "cantidad": "0.5kg",
+              "precio": 1645
+            }
+          ],
+          "total": 1645,
+          "fechaEntrega": "2024-01-29",
+          "horarioEntrega": "14:00-17:00",
+          "estado": "confirmado",
+          "advertencia": "Pedido bajo monto mínimo recomendado de $10.000"
+        }
+      }
+    },
+    {
+      "web_action": "confirmarPedido",
+      "scenario": "edge_pedido_minimo_exacto",
+      "description": "Confirmación con monto exacto del pedido mínimo",
+      "response_status": 201,
+      "tester_prompt": "",
+      "request_body": {
+        "clienteId": "CLI-33333",
+        "pedidoCompleto": "AGS-002:1.73kg",
+        "fechaEntrega": "2024-02-12"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-33333"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-12"
+        },
+        {
+          "name": "pedidoCompleto",
+          "value": "AGS-002:1.73kg"
+        }
+      ],
+      "response_body": {
+        "fechaConfirmacion": "2024-01-30T16:45:12-03:00",
+        "numeroPedido": "PED-500000",
+        "resumenPedido": {
+          "cliente": "CLI-33333",
+          "productos": 1,
+          "pesoTotal": "1.73kg",
+          "valorTotal": 5000,
+          "fechaEntrega": "2024-02-12",
+          "observacion": "Pedido alcanza monto mínimo exacto",
+          "costoEnvio": 0,
+          "tiempoEstimado": "3-4 horas"
+        }
+      }
+    },
+    {
+      "web_action": "confirmarPedido",
+      "scenario": "error_case",
+      "description": "Error por fecha de entrega no válida",
+      "response_status": 400,
+      "tester_prompt": "",
+      "request_body": {
+        "clienteId": "CLI-67890",
+        "pedidoCompleto": "AGS-005:1kg",
+        "fechaEntrega": "2024-01-21"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-67890"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-21"
+        },
+        {
+          "name": "pedidoCompleto",
+          "value": "AGS-005:1kg"
+        }
+      ],
+      "response_body": {
+        "error": "FECHA_ENTREGA_INVALIDA",
+        "mensaje": "La fecha de entrega debe ser al menos 24 horas desde ahora",
+        "fechaMinima": "2024-01-23",
+        "fechaSolicitada": "2024-01-21"
+      }
+    },
+    {
+      "web_action": "confirmarPedido",
+      "scenario": "error_fecha_no_disponible",
+      "description": "Error por fecha de entrega no disponible en la zona",
+      "response_status": 422,
+      "tester_prompt": "",
+      "request_body": {
+        "clienteId": "CLI-45678",
+        "pedidoCompleto": "AGS-001:3kg",
+        "fechaEntrega": "2024-01-31"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-45678"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-31"
+        },
+        {
+          "name": "pedidoCompleto",
+          "value": "AGS-001:3kg"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "FECHA_NO_DISPONIBLE",
+        "mensaje": "La fecha 2024-01-31 no está disponible para entregas en su zona",
+        "fechasDisponibles": [
+          "2024-02-02",
+          "2024-02-05",
+          "2024-02-07"
+        ],
+        "zonaEntrega": "Región Metropolitana Sur"
+      }
+    },
+    {
+      "web_action": "confirmarPedido",
+      "scenario": "happy_path",
+      "description": "Confirmación exitosa del pedido",
+      "response_status": 201,
+      "tester_prompt": "",
+      "request_body": {
+        "clienteId": "CLI-12345",
+        "pedidoCompleto": "AGS-001:2kg,AGS-002:1.5kg,AGS-015:3kg",
+        "fechaEntrega": "2024-01-28"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-12345"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-28"
+        },
+        {
+          "name": "pedidoCompleto",
+          "value": "AGS-001:2kg,AGS-002:1.5kg,AGS-015:3kg"
+        }
+      ],
+      "response_body": {
+        "fechaConfirmacion": "2024-01-22T14:30:00-03:00",
+        "numeroPedido": "PED-789015",
+        "resumenPedido": {
+          "cliente": "CLI-12345",
+          "productos": [
+            {
+              "nombre": "Pollo Entero Super Fresco",
+              "cantidad": "2kg",
+              "precio": 6580
+            },
+            {
+              "nombre": "Pechuga de Pollo Deshuesada",
+              "cantidad": "1.5kg",
+              "precio": 8835
+            },
+            {
+              "nombre": "Chorizo Parrillero",
+              "cantidad": "3kg",
+              "precio": 12750
+            }
+          ],
+          "total": 28165,
+          "fechaEntrega": "2024-01-28",
+          "horarioEntrega": "09:00-12:00",
+          "estado": "confirmado"
+        }
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "alt_happy_busqueda_especifica",
+      "description": "Búsqueda exitosa de productos específicos con promociones vigentes",
+      "response_status": 200,
+      "tester_prompt": "Busca productos de lomo vetado en la categoría vacuno.",
+      "request_params": [
+        {
+          "name": "busqueda",
+          "value": "lomo vetado"
+        },
+        {
+          "name": "categoria",
+          "value": "vacuno"
+        }
+      ],
+      "response_body": {
+        "productos": [
+          {
+            "codigo": "AGS-450",
+            "nombre": "Lomo Vetado Premium",
+            "precio": "$18.990/kg",
+            "stock": "Disponible",
+            "origen": "Región de Los Lagos"
+          },
+          {
+            "codigo": "AGS-451",
+            "nombre": "Lomo Vetado Tradicional",
+            "precio": "$15.490/kg",
+            "stock": "Disponible",
+            "origen": "Región del Maule"
+          }
+        ],
+        "promociones": [
+          {
+            "tipo": "Descuento por volumen",
+            "descripcion": "15% descuento comprando más de 10kg",
+            "vigencia": "Hasta 28/02/2024"
+          }
+        ]
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "alt_happy_premium_products",
+      "description": "Consulta exitosa de productos premium de cerdo",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "categoria",
+          "value": "cerdo"
+        },
+        {
+          "name": "tipoProducto",
+          "value": "premium"
+        }
+      ],
+      "response_body": {
+        "productos": [
+          {
+            "codigo": "AGS-201",
+            "nombre": "Lomo Premium Agrosuper",
+            "precio": 8990,
+            "unidad": "kg",
+            "disponibilidad": "alta",
+            "descripcion": "Lomo de cerdo premium sin aditivos"
+          },
+          {
+            "codigo": "AGS-202",
+            "nombre": "Chuletas Premium",
+            "precio": 6490,
+            "unidad": "kg",
+            "disponibilidad": "media"
+          }
+        ],
+        "promociones": [
+          {
+            "tipo": "descuento",
+            "descripcion": "15% descuento en compras sobre $50.000",
+            "vigencia": "2024-02-15"
+          }
+        ]
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "edge_busqueda_caracteres_especiales",
+      "description": "Búsqueda con caracteres especiales que no arroja resultados",
+      "response_status": 200,
+      "tester_prompt": "Busca 'pollo & jamón' en la categoría embutidos.",
+      "request_params": [
+        {
+          "name": "busqueda",
+          "value": "pollo & jamón"
+        },
+        {
+          "name": "categoria",
+          "value": "embutidos"
+        }
+      ],
+      "response_body": {
+        "productos": [],
+        "promociones": []
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "edge_case",
+      "description": "Consulta de categoría sin productos disponibles",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "categoria",
+          "value": "pavo"
+        },
+        {
+          "name": "tipoProducto",
+          "value": "organico"
+        }
+      ],
+      "response_body": {
+        "productos": [],
+        "promociones": [],
+        "mensaje": "No hay productos disponibles para la categoría y tipo especificado"
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "edge_sin_stock_temporada",
+      "description": "Consulta con productos sin stock por temporada alta",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "categoria",
+          "value": "vacuno"
+        },
+        {
+          "name": "tipoProducto",
+          "value": "especial"
+        }
+      ],
+      "response_body": {
+        "productos": [],
+        "promociones": [],
+        "mensaje": "Productos temporalmente sin stock debido a alta demanda navideña",
+        "fechaReposicion": "2024-02-05"
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "error_case",
+      "description": "Categoría de producto no encontrada",
+      "response_status": 404,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "categoria",
+          "value": "mariscos"
+        },
+        {
+          "name": "tipoProducto",
+          "value": "congelado"
+        }
+      ],
+      "response_body": {
+        "error": "CATEGORIA_NO_ENCONTRADA",
+        "mensaje": "La categoría 'mariscos' no está disponible en nuestro catálogo",
+        "categorias_disponibles": [
+          "pollo",
+          "cerdo",
+          "pavo",
+          "embutidos"
+        ]
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "error_categoria_discontinuada",
+      "description": "Error al consultar categoría discontinuada",
+      "response_status": 404,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "categoria",
+          "value": "cordero"
+        },
+        {
+          "name": "tipoProducto",
+          "value": "fresco"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "CAT_DISCONTINUADA",
+        "mensaje": "La categoría 'cordero' ha sido discontinuada en nuestra línea de productos",
+        "sugerencias": [
+          "cerdo",
+          "vacuno",
+          "pollo"
+        ]
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "error_categoria_mantenimiento",
+      "description": "Error por categoría en mantenimiento temporal",
+      "response_status": 503,
+      "tester_prompt": "Busca productos de salmón en la categoría pescados.",
+      "request_params": [
+        {
+          "name": "busqueda",
+          "value": "salmón"
+        },
+        {
+          "name": "categoria",
+          "value": "pescados"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "CATEGORIA_MANTENIMIENTO",
+        "mensaje": "Categoría pescados en mantenimiento hasta las 18:00 hrs",
+        "productos": [],
+        "promociones": []
+      }
+    },
+    {
+      "web_action": "consultarCatalogoProductos",
+      "scenario": "happy_path",
+      "description": "Consulta exitosa del catálogo de productos de pollo",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "categoria",
+          "value": "pollo"
+        },
+        {
+          "name": "tipoProducto",
+          "value": "fresco"
+        }
+      ],
+      "response_body": {
+        "productos": [
+          {
+            "id": "AGS-001",
+            "nombre": "Pollo Entero Super Fresco",
+            "categoria": "pollo",
+            "precio": 3290,
+            "unidad": "kg",
+            "stock": 150,
+            "descripcion": "Pollo entero fresco de primera calidad"
+          },
+          {
+            "id": "AGS-002",
+            "nombre": "Pechuga de Pollo Deshuesada",
+            "categoria": "pollo",
+            "precio": 5890,
+            "unidad": "kg",
+            "stock": 85,
+            "descripcion": "Pechuga de pollo sin hueso ni piel"
+          }
+        ],
+        "promociones": [
+          {
+            "tipo": "descuento",
+            "descripcion": "15% descuento en compras sobre $50.000",
+            "vigencia": "2024-01-31"
+          }
+        ]
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "alt_happy_cliente_frecuente",
+      "description": "Cliente frecuente con múltiples pedidos programados",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-78901"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-01"
+        }
+      ],
+      "response_body": {
+        "historialPedidos": [
+          {
+            "numero": "PED-890123",
+            "fecha": "2024-01-15",
+            "total": 89500,
+            "estado": "entregado"
+          },
+          {
+            "numero": "PED-890124",
+            "fecha": "2024-01-22",
+            "total": 67800,
+            "estado": "entregado"
+          }
+        ],
+        "pedidoActual": {
+          "numero": "PED-890125",
+          "productos": [
+            "AGS-201:2kg",
+            "AGS-150:1kg"
+          ],
+          "total": 24980,
+          "estado": "confirmado"
+        },
+        "proximaEntrega": {
+          "fecha": "2024-02-08",
+          "horaEstimada": "10:30",
+          "direccion": "Las Condes, Santiago"
+        }
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "alt_happy_distribuidor_regional",
+      "description": "Consulta exitosa para distribuidor regional con múltiples productos programados",
+      "response_status": 200,
+      "tester_prompt": "Dile al agente que eres el cliente CLI-85432 y consulta tu pedido programado para el 15 de febrero.",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-85432"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-15"
+        }
+      ],
+      "response_body": {
+        "fechaEntrega": "2024-02-15",
+        "pedidoActual": "AGS-450:25kg Lomo Vetado Premium, AGS-301:15kg Pechuga Pollo Orgánica, AGS-127:8kg Costillar Cerdo",
+        "totalAproximado": "$487.650"
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "edge_case",
+      "description": "Cliente sin pedidos programados",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-54321"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-27"
+        }
+      ],
+      "response_body": {
+        "historialPedidos": [],
+        "pedidoActual": null,
+        "proximaEntrega": null,
+        "mensaje": "El cliente no tiene pedidos programados"
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "edge_cliente_nuevo_sin_historial",
+      "description": "Cliente nuevo sin historial de pedidos",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-99998"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-10"
+        }
+      ],
+      "response_body": {
+        "historialPedidos": [],
+        "pedidoActual": null,
+        "proximaEntrega": null,
+        "mensaje": "Cliente nuevo - sin historial de pedidos",
+        "beneficiosNuevoCliente": [
+          {
+            "tipo": "descuento",
+            "valor": "10%",
+            "vigencia": "primer pedido"
+          }
+        ]
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "edge_pedido_vacio_fecha_limite",
+      "description": "Cliente sin pedidos en fecha límite de programación",
+      "response_status": 200,
+      "tester_prompt": "Consulta como cliente CLI-13579 tu pedido para el 31 de marzo.",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-13579"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-03-31"
+        }
+      ],
+      "response_body": {
+        "fechaEntrega": "2024-03-31",
+        "pedidoActual": "",
+        "totalAproximado": "$0"
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "error_case",
+      "description": "Cliente no encontrado en el sistema",
+      "response_status": 404,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-99999"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-26"
+        }
+      ],
+      "response_body": {
+        "error": "CLIENTE_NO_ENCONTRADO",
+        "mensaje": "El cliente con ID 'CLI-99999' no existe en nuestro sistema",
+        "codigo_error": "404_CLIENT_NOT_FOUND"
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "error_cliente_suspendido",
+      "description": "Cliente con cuenta suspendida por pagos pendientes",
+      "response_status": 403,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-00001"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-03"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "CLIENTE_SUSPENDIDO",
+        "mensaje": "Cliente suspendido por pagos pendientes",
+        "montoPendiente": 125900,
+        "contacto": "+56 2 2820 8000"
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "error_fecha_formato_invalido",
+      "description": "Error por formato de fecha incorrecto",
+      "response_status": 400,
+      "tester_prompt": "Pregunta por tu pedido como cliente CLI-76543 para la fecha 15/02/2024.",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-76543"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "15/02/2024"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "FECHA_INVALIDA",
+        "mensaje": "Formato de fecha debe ser YYYY-MM-DD",
+        "fechaEntrega": null,
+        "pedidoActual": null,
+        "totalAproximado": null
+      }
+    },
+    {
+      "web_action": "consultarPedidoProgramado",
+      "scenario": "happy_path",
+      "description": "Consulta exitosa de pedidos programados del cliente",
+      "response_status": 200,
+      "tester_prompt": "",
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-12345"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-01-25"
+        }
+      ],
+      "response_body": {
+        "historialPedidos": [
+          {
+            "numeroPedido": "PED-789012",
+            "fecha": "2024-01-18",
+            "total": 87500,
+            "estado": "entregado"
+          },
+          {
+            "numeroPedido": "PED-789013",
+            "fecha": "2024-01-11",
+            "total": 65200,
+            "estado": "entregado"
+          }
+        ],
+        "pedidoActual": {
+          "numeroPedido": "PED-789014",
+          "fecha": "2024-01-25",
+          "productos": [
+            {
+              "nombre": "Pollo Entero Super Fresco",
+              "cantidad": 5,
+              "precio": 3290
+            }
+          ],
+          "total": 16450,
+          "estado": "programado"
+        },
+        "proximaEntrega": {
+          "fecha": "2024-02-01",
+          "horario": "09:00-12:00",
+          "direccion": "Av. Providencia 1234, Santiago"
+        }
+      }
+    },
+    {
+      "web_action": "registrarPedido",
+      "scenario": "alt_happy_pedido_empresarial",
+      "description": "Registro exitoso de pedido empresarial con múltiples productos",
+      "response_status": 200,
+      "tester_prompt": "Registra un pedido como cliente CLI-CORP001 con 50kg de AGS-450, 30kg de AGS-301, 20kg de AGS-127 y 15kg de AGS-205 para el 20 de febrero.",
+      "request_body": {
+        "clienteId": "CLI-CORP001",
+        "productos": "AGS-450:50kg,AGS-301:30kg,AGS-127:20kg,AGS-205:15kg",
+        "fechaEntrega": "2024-02-20"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-CORP001"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-20"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-450:50kg,AGS-301:30kg,AGS-127:20kg,AGS-205:15kg"
+        }
+      ],
+      "response_body": {
+        "numeroOrden": "ORD-240220-8847",
+        "pedidoConfirmado": true,
+        "totalFinal": "$1.847.320"
+      }
+    },
+    {
+      "web_action": "registrarPedido",
+      "scenario": "edge_pedido_cantidad_fraccionaria_minima",
+      "description": "Registro con cantidad fraccionaria mínima permitida",
+      "response_status": 200,
+      "tester_prompt": "Registra un pedido mínimo como cliente CLI-24680 con solo 0.05kg de AGS-105 para el 14 de febrero.",
+      "request_body": {
+        "clienteId": "CLI-24680",
+        "productos": "AGS-105:0.05kg",
+        "fechaEntrega": "2024-02-14"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-24680"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-14"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-105:0.05kg"
+        }
+      ],
+      "response_body": {
+        "numeroOrden": "ORD-240214-0051",
+        "pedidoConfirmado": true,
+        "totalFinal": "$425"
+      }
+    },
+    {
+      "web_action": "registrarPedido",
+      "scenario": "error_producto_descontinuado",
+      "description": "Error por incluir producto descontinuado en el pedido",
+      "response_status": 422,
+      "tester_prompt": "Intenta registrar un pedido como cliente CLI-55667 con 2kg de AGS-999 y 1kg de AGS-301 para el 18 de febrero.",
+      "request_body": {
+        "clienteId": "CLI-55667",
+        "productos": "AGS-999:2kg,AGS-301:1kg",
+        "fechaEntrega": "2024-02-18"
+      },
+      "request_params": [
+        {
+          "name": "clienteId",
+          "value": "CLI-55667"
+        },
+        {
+          "name": "fechaEntrega",
+          "value": "2024-02-18"
+        },
+        {
+          "name": "productos",
+          "value": "AGS-999:2kg,AGS-301:1kg"
+        }
+      ],
+      "response_body": {
+        "error": true,
+        "codigo": "PRODUCTO_DESCONTINUADO",
+        "mensaje": "El producto AGS-999 ha sido descontinuado",
+        "numeroOrden": null,
+        "pedidoConfirmado": false,
+        "totalFinal": null
+      }
+    }
+  ]
+}

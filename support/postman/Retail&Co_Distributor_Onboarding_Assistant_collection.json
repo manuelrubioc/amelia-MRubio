@@ -1,0 +1,1049 @@
+{
+  "info": {
+    "name": "Agente de Incorporaci\u00f3n de Distribuidores Retail&Co - Mock APIs",
+    "description": "Auto-generated mock APIs for Agente de Incorporaci\u00f3n de Distribuidores Retail&Co",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "registrarDistribuidor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/registrarDistribuidor",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "registrarDistribuidor"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombreDistribuidor\": \"{{nombreDistribuidor}}\",\n  \"nombreEmpresa\": \"{{nombreEmpresa}}\",\n  \"categoriaNegocio\": \"{{categoriaNegocio}}\",\n  \"productosInteres\": \"{{productosInteres}}\",\n  \"telefono\": \"{{telefono}}\",\n  \"horariosOperacion\": \"{{horariosOperacion}}\",\n  \"direccionCompleta\": \"{{direccionCompleta}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "registrarDistribuidor - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarDistribuidor",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarDistribuidor"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombreDistribuidor\": \"J\", \"nombreEmpresa\": \"A\", \"categoriaNegocios\": \"Otro\", \"productosInteres\": \"N/A\", \"telefono\": \"1234567890\", \"categoriaNegocio\": \"Micro\", \"direccionCompleta\": \"Sin direcci\u00f3n espec\u00edfica\", \"horariosOperacion\": \"Variable\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estatusRegistro\": \"PENDIENTE_REVISION\", \"numeroRegistro\": \"DIST-MX-2024-001235\", \"siguientesPasos\": [\"Completar informaci\u00f3n faltante\", \"Proporcionar documentos de identificaci\u00f3n\", \"Especificar direcci\u00f3n comercial v\u00e1lida\", \"Contacto telef\u00f3nico para verificaci\u00f3n\"]}"
+        },
+        {
+          "name": "registrarDistribuidor - 409 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarDistribuidor",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarDistribuidor"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombreDistribuidor\": \"Carlos Mendoza\", \"nombreEmpresa\": \"Super Mercados La Esperanza\", \"categoriaNegocios\": \"Supermercado\", \"productosInteres\": \"L\u00e1cteos, Carnes Fr\u00edas\", \"telefono\": \"5555123456\", \"categoriaNegocio\": \"Mayorista\", \"direccionCompleta\": \"Calz. de Tlalpan 3456, Col. Portales, CDMX CP 03300\", \"horariosOperacion\": \"Todos los d\u00edas 6:00-23:00\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "409",
+          "code": 409,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estatusRegistro\": \"RECHAZADO\", \"numeroRegistro\": null, \"siguientesPasos\": [\"La empresa ya se encuentra registrada en nuestro sistema\", \"Contactar al representante asignado: Ana Guti\u00e9rrez (tel: 55-1234-5678)\", \"Verificar estatus de cuenta existente\"]}"
+        },
+        {
+          "name": "registrarDistribuidor - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarDistribuidor",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarDistribuidor"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombreDistribuidor\": \"Mar\u00eda Elena Rodr\u00edguez\", \"nombreEmpresa\": \"Comercializadora del Baj\u00edo SA de CV\", \"categoriaNegocios\": \"Abarrotes y Conveniencia\", \"productosInteres\": \"Bebidas, Snacks, Productos de Limpieza\", \"telefono\": \"4421234567\", \"categoriaNegocio\": \"Minorista\", \"direccionCompleta\": \"Av. Constituyentes 1245, Col. Centro, Quer\u00e9taro, Qro. CP 76000\", \"horariosOperacion\": \"Lunes a S\u00e1bado 7:00-22:00, Domingo 8:00-20:00\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estatusRegistro\": \"APROBADO\", \"numeroRegistro\": \"DIST-MX-2024-001234\", \"siguientesPasos\": [\"Validaci\u00f3n de documentos en 24-48 horas\", \"Asignaci\u00f3n de representante comercial\", \"Programar visita inicial\", \"Configuraci\u00f3n de cuenta comercial\"]}"
+        },
+        {
+          "name": "registrarDistribuidor - 200 large_distributor",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarDistribuidor",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarDistribuidor"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombreDistribuidor\": \"Roberto Alvarado S\u00e1nchez\", \"nombreEmpresa\": \"Distribuidora Nacional del Pac\u00edfico SA de CV\", \"categoriaNegocios\": \"Mayorista, Supermercado, Farmacia, Restaurante\", \"productosInteres\": \"Bebidas Alcoh\u00f3licas, Bebidas No Alcoh\u00f3licas, L\u00e1cteos, Productos Congelados, Medicamentos OTC, Cosm\u00e9ticos, Productos de Limpieza Industrial\", \"telefono\": \"6641987654\", \"categoriaNegocio\": \"Mayorista\", \"direccionCompleta\": \"Blvd. Agua Caliente 12500, Zona R\u00edo, Tijuana, B.C. CP 22320\", \"horariosOperacion\": \"24 horas, 365 d\u00edas\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estatusRegistro\": \"APROBADO_PREMIUM\", \"numeroRegistro\": \"DIST-MX-2024-PREM-001236\", \"siguientesPasos\": [\"Asignaci\u00f3n de gerente de cuenta especializado\", \"Revisi\u00f3n de capacidad de almacenamiento\", \"Evaluaci\u00f3n crediticia para t\u00e9rminos preferenciales\", \"Programar reuni\u00f3n ejecutiva en 48 horas\"]}"
+        },
+        {
+          "name": "registrarDistribuidor - 400 validation_error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarDistribuidor",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarDistribuidor"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombreDistribuidor\": \"Ana Patricia L\u00f3pez\", \"nombreEmpresa\": \"Tienda Mi Barrio\", \"categoriaNegocios\": \"Abarrotes\", \"productosInteres\": \"Productos B\u00e1sicos\", \"telefono\": \"123\", \"categoriaNegocio\": \"Minorista\", \"direccionCompleta\": \"Calle Morelos 45, Col. Centro, Guadalajara, Jal. CP 44100\", \"horariosOperacion\": \"Lunes a Domingo 8:00-20:00\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estatusRegistro\": \"ERROR_VALIDACION\", \"numeroRegistro\": null, \"siguientesPasos\": [\"Proporcionar n\u00famero telef\u00f3nico v\u00e1lido de 10 d\u00edgitos\", \"Verificar formato: LADA + 7 u 8 d\u00edgitos\", \"Ejemplo: 3312345678 para Guadalajara\"]}"
+        }
+      ]
+    },
+    {
+      "name": "consultarCatalogo",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarCatalogo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarCatalogo"
+          ],
+          "query": [
+            {
+              "key": "categoria",
+              "value": "{{categoria}}",
+              "description": "Categor\u00eda de productos a consultar"
+            },
+            {
+              "key": "region",
+              "value": "{{region}}",
+              "description": "Regi\u00f3n o estado donde opera el distribuidor"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "consultarCatalogo - 200 edge_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogo"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "",
+                  "description": "Categor\u00eda de productos a consultar"
+                },
+                {
+                  "key": "region",
+                  "value": "",
+                  "description": "Regi\u00f3n o estado donde opera el distribuidor"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [], \"marcas\": [\"Coca-Cola\", \"Bimbo\", \"Lala\", \"Sabritas\", \"Nestl\u00e9\"], \"condicionesDistribucion\": {\"mensaje\": \"Cat\u00e1logo general disponible\", \"categorias\": [\"Bebidas\", \"Snacks\", \"L\u00e1cteos\", \"Panader\u00eda\", \"Limpieza\", \"Cuidado Personal\"], \"regiones\": [\"CDMX\", \"Guadalajara\", \"Monterrey\", \"Puebla\", \"Tijuana\", \"Le\u00f3n\"], \"contacto\": \"Especifica categor\u00eda y regi\u00f3n para ver productos y precios\"}}"
+        },
+        {
+          "name": "consultarCatalogo - 404 error_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogo"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "Electr\u00f3nicos",
+                  "description": "Categor\u00eda de productos a consultar"
+                },
+                {
+                  "key": "region",
+                  "value": "Yucat\u00e1n",
+                  "description": "Regi\u00f3n o estado donde opera el distribuidor"
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [], \"marcas\": [], \"condicionesDistribucion\": {\"error\": \"La categor\u00eda Electr\u00f3nicos no est\u00e1 disponible en la regi\u00f3n Yucat\u00e1n\", \"regionesDisponibles\": [\"CDMX\", \"Guadalajara\", \"Monterrey\", \"Puebla\"], \"categoriasDisponibles\": [\"Bebidas\", \"Snacks\", \"L\u00e1cteos\", \"Limpieza\"]}}"
+        },
+        {
+          "name": "consultarCatalogo - 200 happy_path",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogo"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "Bebidas",
+                  "description": "Categor\u00eda de productos a consultar"
+                },
+                {
+                  "key": "region",
+                  "value": "CDMX",
+                  "description": "Regi\u00f3n o estado donde opera el distribuidor"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"nombre\": \"Coca-Cola 355ml\", \"codigo\": \"CC355\", \"precio\": \"$12.50\", \"disponibilidad\": \"En stock\"}, {\"nombre\": \"Agua Bonafont 1L\", \"codigo\": \"BF1L\", \"precio\": \"$8.90\", \"disponibilidad\": \"En stock\"}, {\"nombre\": \"Cerveza Corona 355ml\", \"codigo\": \"CR355\", \"precio\": \"$18.00\", \"disponibilidad\": \"Stock limitado\"}], \"marcas\": [\"Coca-Cola\", \"Bonafont\", \"Corona\", \"Pepsi\", \"Sprite\"], \"condicionesDistribucion\": {\"pedidoMinimo\": \"$5,000.00 MXN\", \"descuentoVolumen\": \"5-15% seg\u00fan cantidad\", \"plazoEntrega\": \"24-48 horas\", \"terminosPago\": \"30 d\u00edas\"}}"
+        },
+        {
+          "name": "consultarCatalogo - 200 partial_stock",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogo"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "L\u00e1cteos",
+                  "description": "Categor\u00eda de productos a consultar"
+                },
+                {
+                  "key": "region",
+                  "value": "Monterrey",
+                  "description": "Regi\u00f3n o estado donde opera el distribuidor"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"nombre\": \"Leche Lala Entera 1L\", \"codigo\": \"LAL1L\", \"precio\": \"$22.00\", \"disponibilidad\": \"Stock limitado\"}, {\"nombre\": \"Yogurt Danone 125g\", \"codigo\": \"DAN125\", \"precio\": \"$8.50\", \"disponibilidad\": \"Agotado\"}, {\"nombre\": \"Queso Oaxaca Philadelphia 400g\", \"codigo\": \"PHI400\", \"precio\": \"$65.00\", \"disponibilidad\": \"En stock\"}], \"marcas\": [\"Lala\", \"Danone\", \"Philadelphia\", \"Alpura\"], \"condicionesDistribucion\": {\"pedidoMinimo\": \"$4,000.00 MXN\", \"descuentoVolumen\": \"3-12% seg\u00fan cantidad\", \"plazoEntrega\": \"48-72 horas por refrigeraci\u00f3n\", \"terminosPago\": \"20 d\u00edas\", \"alerta\": \"Algunos productos con disponibilidad limitada por alta demanda\"}}"
+        },
+        {
+          "name": "consultarCatalogo - 200 snacks_guadalajara",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogo"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "Snacks",
+                  "description": "Categor\u00eda de productos a consultar"
+                },
+                {
+                  "key": "region",
+                  "value": "Guadalajara",
+                  "description": "Regi\u00f3n o estado donde opera el distribuidor"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"nombre\": \"Sabritas Cl\u00e1sicas 45g\", \"codigo\": \"SAB45\", \"precio\": \"$14.00\", \"disponibilidad\": \"En stock\"}, {\"nombre\": \"Doritos Nacho 62g\", \"codigo\": \"DOR62\", \"precio\": \"$19.50\", \"disponibilidad\": \"En stock\"}, {\"nombre\": \"Cheetos Torciditos 35g\", \"codigo\": \"CHE35\", \"precio\": \"$12.00\", \"disponibilidad\": \"En stock\"}, {\"nombre\": \"Takis Fuego 113g\", \"codigo\": \"TAK113\", \"precio\": \"$25.00\", \"disponibilidad\": \"Stock limitado\"}], \"marcas\": [\"Sabritas\", \"Barcel\", \"Gamesa\", \"Marinela\"], \"condicionesDistribucion\": {\"pedidoMinimo\": \"$3,000.00 MXN\", \"descuentoVolumen\": \"8-20% seg\u00fan cantidad\", \"plazoEntrega\": \"24 horas\", \"terminosPago\": \"15 d\u00edas\", \"promocionEspecial\": \"Compra 10 cajas, lleva 1 gratis\"}}"
+        }
+      ]
+    },
+    {
+      "name": "programarVisita",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/programarVisita",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "programarVisita"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroRegistro\": \"{{numeroRegistro}}\",\n  \"fechaPreferida\": \"{{fechaPreferida}}\",\n  \"horarioPreferido\": \"{{horarioPreferido}}\",\n  \"direccionVisita\": \"{{direccionVisita}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "programarVisita - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/programarVisita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "programarVisita"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"numeroRegistro\": \"DIST-MX-2024-001235\", \"fechaPreferida\": \"2024-03-16\", \"horarioPreferido\": \"08:00-09:00\", \"direccionVisita\": \"Zona muy lejana sin especificar\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"codigoVisita\": \"VIS-2024-ESP-0457\", \"fechaVisita\": \"2024-03-18\", \"horaVisita\": \"09:00\", \"representanteAsignado\": {\"nombre\": \"Lic. Miguel Hern\u00e1ndez\", \"telefono\": \"55-9876-5432\", \"email\": \"miguel.hernandez@retailco.mx\", \"nota\": \"Visita reprogramada al lunes por disponibilidad de fin de semana\", \"especialidad\": \"Cobertura Nacional\"}}"
+        },
+        {
+          "name": "programarVisita - 404 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/programarVisita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "programarVisita"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"numeroRegistro\": \"DIST-FALSO-123\", \"fechaPreferida\": \"2024-03-20\", \"horarioPreferido\": \"14:00-16:00\", \"direccionVisita\": \"Calle Falsa 123, Ciudad Inexistente\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"codigoVisita\": null, \"fechaVisita\": null, \"horaVisita\": null, \"representanteAsignado\": {\"error\": \"N\u00famero de registro no encontrado\", \"mensaje\": \"Verifique que el n\u00famero de registro sea correcto\", \"contactoSoporte\": \"800-RETAIL-0 (800-738-2450)\"}}"
+        },
+        {
+          "name": "programarVisita - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/programarVisita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "programarVisita"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"numeroRegistro\": \"DIST-MX-2024-001234\", \"fechaPreferida\": \"2024-03-15\", \"horarioPreferido\": \"10:00-12:00\", \"direccionVisita\": \"Av. Constituyentes 1245, Col. Centro, Quer\u00e9taro, Qro. CP 76000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"codigoVisita\": \"VIS-2024-QRO-0456\", \"fechaVisita\": \"2024-03-15\", \"horaVisita\": \"10:30\", \"representanteAsignado\": {\"nombre\": \"Ing. Patricia Morales\", \"telefono\": \"442-123-4567\", \"email\": \"patricia.morales@retailco.mx\", \"especialidad\": \"Abarrotes y Conveniencia\"}}"
+        },
+        {
+          "name": "programarVisita - 200 no_availability",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/programarVisita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "programarVisita"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"numeroRegistro\": \"DIST-MX-2024-001240\", \"fechaPreferida\": \"2024-12-24\", \"horarioPreferido\": \"09:00-11:00\", \"direccionVisita\": \"Av. Revoluci\u00f3n 500, Col. San Pedro, Guadalajara, Jal. CP 44200\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"codigoVisita\": \"VIS-2024-ALT-0459\", \"fechaVisita\": \"2024-12-27\", \"horaVisita\": \"10:00\", \"representanteAsignado\": {\"nombre\": \"Lic. Carmen V\u00e1zquez\", \"telefono\": \"33-2468-1357\", \"email\": \"carmen.vazquez@retailco.mx\", \"mensaje\": \"Fecha original no disponible por temporada navide\u00f1a\", \"fechasAlternativas\": [\"2024-12-27\", \"2024-12-30\", \"2025-01-02\"], \"especialidad\": \"Zona Occidente\"}}"
+        },
+        {
+          "name": "programarVisita - 200 urgent_visit",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/programarVisita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "programarVisita"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"numeroRegistro\": \"DIST-MX-2024-PREM-001236\", \"fechaPreferida\": \"2024-03-12\", \"horarioPreferido\": \"URGENTE - Cualquier hora\", \"direccionVisita\": \"Blvd. Agua Caliente 12500, Zona R\u00edo, Tijuana, B.C. CP 22320\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"codigoVisita\": \"VIS-2024-URG-0458\", \"fechaVisita\": \"2024-03-12\", \"horaVisita\": \"16:00\", \"representanteAsignado\": {\"nombre\": \"Gerente Regional Alejandro Ruiz\", \"telefono\": \"664-555-0123\", \"email\": \"alejandro.ruiz@retailco.mx\", \"especialidad\": \"Cuentas Premium y Mayoristas\", \"nota\": \"Visita prioritaria confirmada para el mismo d\u00eda\"}}"
+        }
+      ]
+    },
+    {
+      "name": "consultarRequisitos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarRequisitos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarRequisitos"
+          ],
+          "query": [
+            {
+              "key": "tipoNegocio",
+              "value": "{{tipoNegocio}}",
+              "description": "Tipo de negocio del prospecto"
+            },
+            {
+              "key": "ubicacion",
+              "value": "{{ubicacion}}",
+              "description": "Ubicaci\u00f3n del negocio"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "consultarRequisitos - 200 edge_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarRequisitos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarRequisitos"
+              ],
+              "query": [
+                {
+                  "key": "tipoNegocio",
+                  "value": "",
+                  "description": "Tipo de negocio del prospecto"
+                },
+                {
+                  "key": "ubicacion",
+                  "value": "",
+                  "description": "Ubicaci\u00f3n del negocio"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"requisitosBasicos\": [\"Informaci\u00f3n general disponible\", \"RFC vigente\", \"Identificaci\u00f3n oficial\", \"Comprobante de domicilio\"], \"documentosNecesarios\": [\"Especificar tipo de negocio para lista detallada\"], \"beneficios\": [\"Beneficios var\u00edan seg\u00fan tipo de negocio y ubicaci\u00f3n\", \"Descuentos por volumen\", \"Soporte comercial\", \"Capacitaci\u00f3n inicial\"], \"terminosComerciales\": {\"mensaje\": \"T\u00e9rminos espec\u00edficos disponibles al proporcionar tipo de negocio y ubicaci\u00f3n\", \"contacto\": \"Llame al 800-RETAIL-0 para asesor\u00eda personalizada\"}}"
+        },
+        {
+          "name": "consultarRequisitos - 400 error_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarRequisitos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarRequisitos"
+              ],
+              "query": [
+                {
+                  "key": "tipoNegocio",
+                  "value": "Casino",
+                  "description": "Tipo de negocio del prospecto"
+                },
+                {
+                  "key": "ubicacion",
+                  "value": "Las Vegas",
+                  "description": "Ubicaci\u00f3n del negocio"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"requisitosBasicos\": [], \"documentosNecesarios\": [], \"beneficios\": [], \"terminosComerciales\": {\"error\": \"Tipo de negocio no soportado\", \"mensaje\": \"El tipo de negocio 'Casino' no est\u00e1 dentro de nuestros segmentos objetivo\", \"tiposPermitidos\": [\"Supermercado\", \"Abarrotes\", \"Farmacia\", \"Restaurante\", \"Conveniencia\", \"Mayorista\"], \"ubicacionesPermitidas\": [\"CDMX\", \"Guadalajara\", \"Monterrey\", \"Puebla\", \"Tijuana\", \"Le\u00f3n\", \"Quer\u00e9taro\"]}}"
+        },
+        {
+          "name": "consultarRequisitos - 200 happy_path",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarRequisitos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarRequisitos"
+              ],
+              "query": [
+                {
+                  "key": "tipoNegocio",
+                  "value": "Supermercado",
+                  "description": "Tipo de negocio del prospecto"
+                },
+                {
+                  "key": "ubicacion",
+                  "value": "CDMX",
+                  "description": "Ubicaci\u00f3n del negocio"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"requisitosBasicos\": [\"RFC activo y al corriente\", \"Comprobante de domicilio fiscal\", \"Acta constitutiva (personas morales)\", \"Identificaci\u00f3n oficial del representante legal\", \"Comprobante de ingresos o estados financieros\", \"Referencias comerciales (m\u00ednimo 2)\"], \"documentosNecesarios\": [\"C\u00e9dula de identificaci\u00f3n fiscal\", \"Licencia de funcionamiento municipal\", \"Permiso de venta de bebidas alcoh\u00f3licas (si aplica)\", \"P\u00f3liza de seguro de responsabilidad civil\", \"Contrato de arrendamiento o escritura del local\"], \"beneficios\": [\"Descuentos por volumen hasta 20%\", \"Cr\u00e9dito comercial hasta 45 d\u00edas\", \"Entrega gratuita en pedidos mayores a $10,000\", \"Representante comercial dedicado\", \"Promociones exclusivas mensuales\", \"Sistema de gesti\u00f3n de inventarios\"], \"terminosComerciales\": {\"pedidoMinimo\": \"$15,000.00 MXN\", \"descuentoBase\": \"8%\", \"plazoCredito\": \"30-45 d\u00edas\", \"garantia\": \"$50,000.00 MXN o aval\"}}"
+        },
+        {
+          "name": "consultarRequisitos - 200 restaurant_chain",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarRequisitos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarRequisitos"
+              ],
+              "query": [
+                {
+                  "key": "tipoNegocio",
+                  "value": "Restaurante",
+                  "description": "Tipo de negocio del prospecto"
+                },
+                {
+                  "key": "ubicacion",
+                  "value": "Monterrey",
+                  "description": "Ubicaci\u00f3n del negocio"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"requisitosBasicos\": [\"RFC de persona moral activo\", \"Estados financieros auditados\", \"Licencias sanitarias vigentes\", \"Certificaci\u00f3n en manejo de alimentos\", \"P\u00f3lizas de seguro actualizadas\", \"Experiencia comprobable en el sector\"], \"documentosNecesarios\": [\"Licencia de funcionamiento COFEPRIS\", \"Permisos municipales de operaci\u00f3n\", \"Certificados de calidad ISO (deseable)\", \"Contratos de locales o propiedades\", \"Organigrama y estructura corporativa\"], \"beneficios\": [\"Descuentos especiales hasta 25%\", \"Cr\u00e9dito extendido hasta 60 d\u00edas\", \"Gerente de cuenta especializado\", \"Productos exclusivos para restaurantes\", \"Entrega programada y log\u00edstica especializada\", \"Programa de fidelidad con bonificaciones\"], \"terminosComerciales\": {\"pedidoMinimo\": \"$25,000.00 MXN\", \"descuentoBase\": \"12%\", \"plazoCredito\": \"45-60 d\u00edas\", \"garantia\": \"L\u00ednea de cr\u00e9dito evaluada seg\u00fan historial\"}}"
+        },
+        {
+          "name": "consultarRequisitos - 200 small_business",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarRequisitos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarRequisitos"
+              ],
+              "query": [
+                {
+                  "key": "tipoNegocio",
+                  "value": "Abarrotes",
+                  "description": "Tipo de negocio del prospecto"
+                },
+                {
+                  "key": "ubicacion",
+                  "value": "Puebla",
+                  "description": "Ubicaci\u00f3n del negocio"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"requisitosBasicos\": [\"RFC con actividad comercial\", \"Identificaci\u00f3n oficial vigente\", \"Comprobante de domicilio del negocio\", \"Experiencia m\u00ednima 6 meses en el ramo\"], \"documentosNecesarios\": [\"Licencia municipal de funcionamiento\", \"Contrato de arrendamiento o propiedad\", \"Comprobante de ingresos o declaraciones\", \"Fotograf\u00edas del establecimiento\"], \"beneficios\": [\"Descuentos progresivos 3-12%\", \"Cr\u00e9dito inicial hasta 15 d\u00edas\", \"Capacitaci\u00f3n en manejo de productos\", \"Entrega sin costo en pedidos >$5,000\", \"Soporte telef\u00f3nico dedicado\"], \"terminosComerciales\": {\"pedidoMinimo\": \"$3,000.00 MXN\", \"descuentoBase\": \"5%\", \"plazoCredito\": \"15 d\u00edas inicial, extensible a 30\", \"garantia\": \"Referencias comerciales o dep\u00f3sito $10,000\"}}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://aa108495-09cb-42f4-aab2-0d6260466acc.mock.pstmn.io"
+    },
+    {
+      "key": "nombreDistribuidor",
+      "value": "sample_nombreDistribuidor"
+    },
+    {
+      "key": "nombreEmpresa",
+      "value": "sample_nombreEmpresa"
+    },
+    {
+      "key": "categoriaNegocio",
+      "value": "sample_categoriaNegocio"
+    },
+    {
+      "key": "productosInteres",
+      "value": "sample_productosInteres"
+    },
+    {
+      "key": "telefono",
+      "value": "sample_telefono"
+    },
+    {
+      "key": "horariosOperacion",
+      "value": "sample_horariosOperacion"
+    },
+    {
+      "key": "direccionCompleta",
+      "value": "sample_direccionCompleta"
+    },
+    {
+      "key": "categoria",
+      "value": "sample_categoria"
+    },
+    {
+      "key": "region",
+      "value": "sample_region"
+    },
+    {
+      "key": "numeroRegistro",
+      "value": "sample_numeroRegistro"
+    },
+    {
+      "key": "fechaPreferida",
+      "value": "sample_fechaPreferida"
+    },
+    {
+      "key": "horarioPreferido",
+      "value": "sample_horarioPreferido"
+    },
+    {
+      "key": "direccionVisita",
+      "value": "sample_direccionVisita"
+    },
+    {
+      "key": "tipoNegocio",
+      "value": "sample_tipoNegocio"
+    },
+    {
+      "key": "ubicacion",
+      "value": "sample_ubicacion"
+    }
+  ]
+}

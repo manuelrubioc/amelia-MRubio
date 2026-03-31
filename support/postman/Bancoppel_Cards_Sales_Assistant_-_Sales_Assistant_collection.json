@@ -1,0 +1,895 @@
+{
+  "info": {
+    "name": "Asistente de Ventas Tarjetas Bancoppel - Mock APIs",
+    "description": "Auto-generated mock APIs for Asistente de Ventas Tarjetas Bancoppel",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "consultarProductosTarjetas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarProductosTarjetas",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarProductosTarjetas"
+          ],
+          "query": [
+            {
+              "key": "tipoTarjeta",
+              "value": "{{tipoTarjeta}}",
+              "description": "Tipo de tarjeta: credito o debito"
+            },
+            {
+              "key": "rangoIngresos",
+              "value": "{{rangoIngresos}}",
+              "description": "Rango de ingresos del cliente"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tipoTarjeta\": \"{{tipoTarjeta}}\",\n  \"rangoIngresos\": \"{{rangoIngresos}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "consultarProductosTarjetas - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarProductosTarjetas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarProductosTarjetas"
+              ],
+              "query": [
+                {
+                  "key": "rangoIngresos",
+                  "value": "200000+",
+                  "description": ""
+                },
+                {
+                  "key": "tipoTarjeta",
+                  "value": "empresarial",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cardType\": \"empresarial\", \"incomeRange\": \"200000+\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [], \"recomendacion\": \"Para su perfil de ingresos superiores a $200,000 pesos mensuales, le sugerimos contactar directamente con nuestro equipo de Banca Privada para productos personalizados.\"}"
+        },
+        {
+          "name": "consultarProductosTarjetas - 400 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarProductosTarjetas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarProductosTarjetas"
+              ],
+              "query": [
+                {
+                  "key": "rangoIngresos",
+                  "value": "5000-8000",
+                  "description": ""
+                },
+                {
+                  "key": "tipoTarjeta",
+                  "value": "debito",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cardType\": \"debito\", \"incomeRange\": \"5000-8000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"INCOME_TOO_LOW\", \"mensaje\": \"El rango de ingresos proporcionado no cumple con los requisitos m\u00ednimos para productos de cr\u00e9dito. Ingreso m\u00ednimo requerido: $10,000.00\", \"productos\": [], \"recomendacion\": \"\"}"
+        },
+        {
+          "name": "consultarProductosTarjetas - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarProductosTarjetas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarProductosTarjetas"
+              ],
+              "query": [
+                {
+                  "key": "rangoIngresos",
+                  "value": "15000-30000",
+                  "description": ""
+                },
+                {
+                  "key": "tipoTarjeta",
+                  "value": "credito",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cardType\": \"credito\", \"incomeRange\": \"15000-30000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"id\": \"BC-GOLD-001\", \"nombre\": \"Bancoppel Oro\", \"tipoTarjeta\": \"Cr\u00e9dito\", \"anualidad\": \"$890.00\", \"tasaInteres\": \"42.9%\", \"limiteCredito\": \"$45,000.00\", \"beneficios\": [\"2% cashback en supermercados\", \"Sin anualidad primer a\u00f1o\", \"Meses sin intereses en tiendas afiliadas\"]}, {\"id\": \"BC-PLAT-002\", \"nombre\": \"Bancoppel Platino\", \"tipoTarjeta\": \"Cr\u00e9dito\", \"anualidad\": \"$1,490.00\", \"tasaInteres\": \"39.9%\", \"limiteCredito\": \"$80,000.00\", \"beneficios\": [\"3% cashback en gasolineras\", \"Seguro de viaje\", \"Acceso a salas VIP\"]}], \"recomendacion\": \"Para su perfil de ingresos, recomendamos la tarjeta Bancoppel Oro que ofrece excelentes beneficios sin comprometer su capacidad de pago.\"}"
+        }
+      ]
+    },
+    {
+      "name": "evaluarPerfilCrediticio",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/evaluarPerfilCrediticio",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "evaluarPerfilCrediticio"
+          ],
+          "query": [
+            {
+              "key": "rfc",
+              "value": "{{rfc}}",
+              "description": "RFC del cliente"
+            },
+            {
+              "key": "curp",
+              "value": "{{curp}}",
+              "description": "CURP del cliente"
+            },
+            {
+              "key": "ingresosMensuales",
+              "value": "{{ingresosMensuales}}",
+              "description": "Ingresos mensuales declarados"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rfc\": \"{{rfc}}\",\n  \"curp\": \"{{curp}}\",\n  \"ingresosMensuales\": \"{{ingresosMensuales}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "evaluarPerfilCrediticio - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/evaluarPerfilCrediticio",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "evaluarPerfilCrediticio"
+              ],
+              "query": [
+                {
+                  "key": "curp",
+                  "value": "LOPA001205HDFPRL09",
+                  "description": ""
+                },
+                {
+                  "key": "ingresosMensuales",
+                  "value": "12000",
+                  "description": ""
+                },
+                {
+                  "key": "rfc",
+                  "value": "LOPA001205ABC",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rfc\": \"LOPA001205ABC\", \"curp\": \"LOPA001205HDFPRL09\", \"monthlyIncome\": \"12000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"limiteAprobado\": \"$15,000.00\", \"productosElegibles\": [\"BC-BASIC-004\"], \"scoreCredito\": 0, \"evaluacion\": \"APROBADO_CONDICIONAL\", \"observaciones\": \"Cliente sin historial crediticio. L\u00edmite inicial conservador con posibilidad de incremento tras 6 meses de buen comportamiento\"}"
+        },
+        {
+          "name": "evaluarPerfilCrediticio - 200 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/evaluarPerfilCrediticio",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "evaluarPerfilCrediticio"
+              ],
+              "query": [
+                {
+                  "key": "curp",
+                  "value": "PEJI790820MDFRZN08",
+                  "description": ""
+                },
+                {
+                  "key": "ingresosMensuales",
+                  "value": "18000",
+                  "description": ""
+                },
+                {
+                  "key": "rfc",
+                  "value": "PEJI790820MDF",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rfc\": \"PEJI790820MDF\", \"curp\": \"PEJI790820MDFRZN08\", \"monthlyIncome\": \"18000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"limiteAprobado\": \"$0.00\", \"productosElegibles\": [], \"scoreCredito\": 485, \"evaluacion\": \"RECHAZADO\", \"observaciones\": \"Cliente presenta reportes negativos en Bur\u00f3 de Cr\u00e9dito. Se requiere mejorar historial crediticio antes de solicitar productos\"}"
+        },
+        {
+          "name": "evaluarPerfilCrediticio - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/evaluarPerfilCrediticio",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "evaluarPerfilCrediticio"
+              ],
+              "query": [
+                {
+                  "key": "curp",
+                  "value": "GOME850315HDFMRN04",
+                  "description": ""
+                },
+                {
+                  "key": "ingresosMensuales",
+                  "value": "25000",
+                  "description": ""
+                },
+                {
+                  "key": "rfc",
+                  "value": "GOME850315HDF",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rfc\": \"GOME850315HDF\", \"curp\": \"GOME850315HDFMRN04\", \"monthlyIncome\": \"25000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"limiteAprobado\": \"$65,000.00\", \"productosElegibles\": [\"BC-GOLD-001\", \"BC-PLAT-002\", \"BC-CASH-003\"], \"scoreCredito\": 745, \"evaluacion\": \"APROBADO\", \"observaciones\": \"Cliente con historial crediticio favorable y capacidad de pago comprobada\"}"
+        }
+      ]
+    },
+    {
+      "name": "calcularBeneficios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/calcularBeneficios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "calcularBeneficios"
+          ],
+          "query": [
+            {
+              "key": "productoId",
+              "value": "{{productoId}}",
+              "description": "Identificador del producto de tarjeta"
+            },
+            {
+              "key": "gastoMensualEstimado",
+              "value": "{{gastoMensualEstimado}}",
+              "description": "Gasto mensual estimado del cliente"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productoId\": \"{{productoId}}\",\n  \"gastoMensualEstimado\": \"{{gastoMensualEstimado}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "calcularBeneficios - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/calcularBeneficios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calcularBeneficios"
+              ],
+              "query": [
+                {
+                  "key": "gastoMensualEstimado",
+                  "value": "500",
+                  "description": ""
+                },
+                {
+                  "key": "productoId",
+                  "value": "BC-BASIC-004",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"productId\": \"BC-BASIC-004\", \"monthlySpending\": \"500\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"ahorroAnualidad\": \"$0.00\", \"cashbackAnual\": \"$60.00\", \"puntosRecompensa\": 60, \"detalleCalculos\": {\"gastoAnual\": \"$6,000.00\", \"cashbackSupermercados\": \"$30.00\", \"cashbackGeneral\": \"$30.00\", \"valorPuntos\": \"$60.00\"}, \"resumenBeneficios\": \"Con un gasto mensual bajo de $500, los beneficios son limitados. Considere incrementar el uso de la tarjeta para maximizar recompensas\"}"
+        },
+        {
+          "name": "calcularBeneficios - 404 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/calcularBeneficios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calcularBeneficios"
+              ],
+              "query": [
+                {
+                  "key": "gastoMensualEstimado",
+                  "value": "5000",
+                  "description": ""
+                },
+                {
+                  "key": "productoId",
+                  "value": "BC-INVALID-999",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"productId\": \"BC-INVALID-999\", \"monthlySpending\": \"5000\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"PRODUCT_NOT_FOUND\", \"mensaje\": \"El producto especificado no existe en nuestro cat\u00e1logo\", \"ahorroAnualidad\": \"$0.00\", \"cashbackAnual\": \"$0.00\", \"puntosRecompensa\": 0}"
+        },
+        {
+          "name": "calcularBeneficios - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/calcularBeneficios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calcularBeneficios"
+              ],
+              "query": [
+                {
+                  "key": "gastoMensualEstimado",
+                  "value": "8500",
+                  "description": ""
+                },
+                {
+                  "key": "productoId",
+                  "value": "BC-GOLD-001",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"productId\": \"BC-GOLD-001\", \"monthlySpending\": \"8500\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"ahorroAnualidad\": \"$890.00\", \"cashbackAnual\": \"$2,040.00\", \"puntosRecompensa\": 10200, \"detalleCalculos\": {\"gastoAnual\": \"$102,000.00\", \"cashbackSupermercados\": \"$1,530.00\", \"cashbackGeneral\": \"$510.00\", \"valorPuntos\": \"$1,020.00\"}, \"resumenBeneficios\": \"Con un gasto mensual de $8,500, obtendr\u00e1 $2,040 en cashback anual y 10,200 puntos recompensa\"}"
+        }
+      ]
+    },
+    {
+      "name": "registrarLeadVentas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/registrarLeadVentas",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "registrarLeadVentas"
+          ],
+          "query": [
+            {
+              "key": "datosContacto",
+              "value": "{{datosContacto}}",
+              "description": "Informaci\u00f3n de contacto del cliente"
+            },
+            {
+              "key": "productoInteres",
+              "value": "{{productoInteres}}",
+              "description": "Producto de inter\u00e9s"
+            },
+            {
+              "key": "scoreCalificacion",
+              "value": "{{scoreCalificacion}}",
+              "description": "Puntuaci\u00f3n de calificaci\u00f3n del lead"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datosContacto\": \"{{datosContacto}}\",\n  \"productoInteres\": \"{{productoInteres}}\",\n  \"scoreCalificacion\": \"{{scoreCalificacion}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "registrarLeadVentas - 201 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarLeadVentas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarLeadVentas"
+              ],
+              "query": [
+                {
+                  "key": "datosContacto",
+                  "value": "Pedro Ram\u00edrez - Tel: 5559876543 - Email: pedro.ramirez@email.com",
+                  "description": ""
+                },
+                {
+                  "key": "productoInteres",
+                  "value": "BC-BASIC-004",
+                  "description": ""
+                },
+                {
+                  "key": "scoreCalificacion",
+                  "value": "D",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"contactInfo\": \"Pedro Ram\u00edrez - Tel: 5559876543 - Email: pedro.ramirez@email.com\", \"interestedProduct\": \"BC-BASIC-004\", \"qualificationScore\": \"D\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "201",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"ejecutivoAsignado\": \"Lic. Ana Torres - Ext: 2951\", \"fechaSeguimiento\": \"2024-01-22T14:00:00-06:00\", \"numeroReferencia\": \"REF-BC-20240115-001235\", \"sucursalAsignada\": \"Bancoppel Centro\", \"proximosPasos\": \"Debido a la calificaci\u00f3n, se programar\u00e1 seguimiento en 5 d\u00edas h\u00e1biles para evaluar opciones de productos b\u00e1sicos y mejora de perfil crediticio\"}"
+        },
+        {
+          "name": "registrarLeadVentas - 400 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarLeadVentas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarLeadVentas"
+              ],
+              "query": [
+                {
+                  "key": "datosContacto",
+                  "value": "Juan - Tel: 555",
+                  "description": ""
+                },
+                {
+                  "key": "productoInteres",
+                  "value": "BC-PLAT-002",
+                  "description": ""
+                },
+                {
+                  "key": "scoreCalificacion",
+                  "value": "C",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"contactInfo\": \"Juan - Tel: 555\", \"interestedProduct\": \"BC-PLAT-002\", \"qualificationScore\": \"C\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"INVALID_CONTACT_INFO\", \"mensaje\": \"Los datos de contacto proporcionados son incompletos. Se requiere nombre completo, tel\u00e9fono v\u00e1lido y email\", \"ejecutivoAsignado\": \"\", \"fechaSeguimiento\": \"\", \"numeroReferencia\": \"\"}"
+        },
+        {
+          "name": "registrarLeadVentas - 201 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarLeadVentas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarLeadVentas"
+              ],
+              "query": [
+                {
+                  "key": "datosContacto",
+                  "value": "Mar\u00eda Gonz\u00e1lez - Tel: 5551234567 - Email: maria.gonzalez@email.com",
+                  "description": ""
+                },
+                {
+                  "key": "productoInteres",
+                  "value": "BC-GOLD-001",
+                  "description": ""
+                },
+                {
+                  "key": "scoreCalificacion",
+                  "value": "A",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"contactInfo\": \"Mar\u00eda Gonz\u00e1lez - Tel: 5551234567 - Email: maria.gonzalez@email.com\", \"interestedProduct\": \"BC-GOLD-001\", \"qualificationScore\": \"A\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "201",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"ejecutivoAsignado\": \"Lic. Carlos Mendoza - Ext: 2847\", \"fechaSeguimiento\": \"2024-01-18T10:00:00-06:00\", \"numeroReferencia\": \"REF-BC-20240115-001234\", \"sucursalAsignada\": \"Bancoppel Insurgentes Sur\", \"proximosPasos\": \"El ejecutivo se comunicar\u00e1 dentro de 24 horas para agendar cita y completar la solicitud\"}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://795fca70-335b-4218-bfd0-17e871dc0fd3.mock.pstmn.io"
+    },
+    {
+      "key": "tipoTarjeta",
+      "value": "sample_tipoTarjeta"
+    },
+    {
+      "key": "rangoIngresos",
+      "value": "sample_rangoIngresos"
+    },
+    {
+      "key": "rfc",
+      "value": "sample_rfc"
+    },
+    {
+      "key": "curp",
+      "value": "sample_curp"
+    },
+    {
+      "key": "ingresosMensuales",
+      "value": "sample_ingresosMensuales"
+    },
+    {
+      "key": "productoId",
+      "value": "sample_productoId"
+    },
+    {
+      "key": "gastoMensualEstimado",
+      "value": "sample_gastoMensualEstimado"
+    },
+    {
+      "key": "datosContacto",
+      "value": "sample_datosContacto"
+    },
+    {
+      "key": "productoInteres",
+      "value": "sample_productoInteres"
+    },
+    {
+      "key": "scoreCalificacion",
+      "value": "sample_scoreCalificacion"
+    }
+  ]
+}
