@@ -1,0 +1,2124 @@
+{
+  "info": {
+    "name": "Asistente de Citas Bancoppel - Mock APIs",
+    "description": "Auto-generated mock APIs for Asistente de Citas Bancoppel",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "buscarSucursales",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/buscarSucursales",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "buscarSucursales"
+          ],
+          "query": [
+            {
+              "key": "ciudad",
+              "value": "{{ciudad}}",
+              "description": "Ciudad donde buscar sucursales"
+            },
+            {
+              "key": "codigoPostal",
+              "value": "{{codigoPostal}}",
+              "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+            },
+            {
+              "key": "activas",
+              "value": "{{activas}}",
+              "description": "(auto-detected from web action body)"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ciudad\": \"{{ciudad}}\",\n  \"codigoPostal\": \"{{codigoPostal}}\",\n  \"activas\": \"{{activas}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "buscarSucursales - 200 alt_happy_large_result",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Valencia",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "46001",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "true",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Valencia\", \"codigoPostal\": \"46001\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"sucursales\": [{\"id\": \"SUC005\", \"nombre\": \"Bancoppel Valencia Centro\", \"direccion\": \"Calle Col\u00f3n 24, 46004 Valencia\", \"telefono\": \"963456789\", \"horario\": \"09:00-14:30\", \"servicios\": [\"cuentas\", \"prestamos\", \"hipotecas\"]}, {\"id\": \"SUC006\", \"nombre\": \"Bancoppel Valencia Norte\", \"direccion\": \"Avenida Blasco Ib\u00e1\u00f1ez 15, 46010 Valencia\", \"telefono\": \"963567890\", \"horario\": \"08:30-14:00\", \"servicios\": [\"inversiones\", \"seguros\"]}, {\"id\": \"SUC007\", \"nombre\": \"Bancoppel Valencia Sur\", \"direccion\": \"Calle X\u00e0tiva 89, 46007 Valencia\", \"telefono\": \"963678901\", \"horario\": \"09:30-15:00\", \"servicios\": [\"cuentas\", \"tarjetas\"]}], \"totalSucursales\": 3}"
+        },
+        {
+          "name": "buscarSucursales - 200 alt_happy_rural_location",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Guadalajara",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "19001",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "true",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Guadalajara\", \"codigoPostal\": \"19001\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"sucursales\": [{\"id\": \"SUC021\", \"nombre\": \"Bancoppel Guadalajara Centro\", \"direccion\": \"Plaza Mayor, 15\", \"telefono\": \"949234567\", \"horario\": \"L-V: 8:30-14:00\", \"activa\": true, \"servicios\": [\"cuentas\", \"prestamos\"]}], \"totalSucursales\": 1}"
+        },
+        {
+          "name": "buscarSucursales - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Barcelona",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "{{activas}}",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Barcelona\", \"codigoPostal\": \"\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"sucursales\": [], \"totalSucursales\": 0}"
+        },
+        {
+          "name": "buscarSucursales - 200 edge_special_characters",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Alcal\u00e1 de Henares",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "28801",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "true",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Alcal\u00e1 de Henares\", \"codigoPostal\": \"28801\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"sucursales\": [], \"totalSucursales\": 0, \"mensaje\": \"No se encontraron sucursales activas en esta localizaci\u00f3n\"}"
+        },
+        {
+          "name": "buscarSucursales - 404 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Cuenca",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "16001",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "{{activas}}",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Cuenca\", \"codigoPostal\": \"16001\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"NO_SUCURSALES_ENCONTRADAS\", \"mensaje\": \"No se encontraron sucursales activas en Cuenca con c\u00f3digo postal 16001\", \"sucursales\": [], \"totalSucursales\": 0}"
+        },
+        {
+          "name": "buscarSucursales - 404 error_city_not_covered",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Pontevedra",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "36001",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "false",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Pontevedra\", \"codigoPostal\": \"36001\", \"activas\": false}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error\": \"CIUDAD_NO_CUBIERTA\", \"message\": \"Bancoppel no tiene sucursales en Pontevedra\", \"sucursales\": [], \"totalSucursales\": 0}"
+        },
+        {
+          "name": "buscarSucursales - 404 error_invalid_postal_code",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Zaragoza",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "99999",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "true",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Zaragoza\", \"codigoPostal\": \"99999\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"CODIGO_POSTAL_INVALIDO\", \"mensaje\": \"El c\u00f3digo postal 99999 no existe en Espa\u00f1a\", \"codigo\": \"CP_001\", \"sucursales\": [], \"totalSucursales\": 0}"
+        },
+        {
+          "name": "buscarSucursales - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/buscarSucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buscarSucursales"
+              ],
+              "query": [
+                {
+                  "key": "ciudad",
+                  "value": "Madrid",
+                  "description": "Ciudad donde buscar sucursales"
+                },
+                {
+                  "key": "codigoPostal",
+                  "value": "28001",
+                  "description": "C\u00f3digo postal para b\u00fasqueda m\u00e1s precisa"
+                },
+                {
+                  "key": "activas",
+                  "value": "{{activas}}",
+                  "description": "(auto-detected from web action body)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ciudad\": \"Madrid\", \"codigoPostal\": \"28001\", \"activas\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"sucursales\": [{\"id\": \"SUC001\", \"nombre\": \"Bancoppel Gran V\u00eda\", \"direccion\": \"Gran V\u00eda, 45\", \"codigoPostal\": \"28001\", \"ciudad\": \"Madrid\", \"telefono\": \"915234567\", \"horario\": \"L-V: 8:30-14:30\", \"coordenadas\": {\"lat\": 40.4200, \"lng\": -3.7000}}, {\"id\": \"SUC002\", \"nombre\": \"Bancoppel Sol\", \"direccion\": \"Puerta del Sol, 12\", \"codigoPostal\": \"28001\", \"ciudad\": \"Madrid\", \"telefono\": \"915234568\", \"horario\": \"L-V: 8:30-14:30\", \"coordenadas\": {\"lat\": 40.4165, \"lng\": -3.7026}}], \"totalSucursales\": 2}"
+        }
+      ]
+    },
+    {
+      "name": "consultarHorarios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarHorarios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarHorarios"
+          ],
+          "query": [
+            {
+              "key": "sucursalId",
+              "value": "{{sucursalId}}",
+              "description": "ID de la sucursal seleccionada"
+            },
+            {
+              "key": "fecha",
+              "value": "{{fecha}}",
+              "description": "Fecha deseada para la cita"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sucursalId\": \"{{sucursalId}}\",\n  \"fecha\": \"{{fecha}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "consultarHorarios - 200 alt_happy_peak_season",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC015",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-03-15",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC015\", \"fecha\": \"2024-03-15\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"horariosDisponibles\": [\"08:30\", \"09:00\", \"09:30\", \"10:00\", \"10:30\", \"11:00\", \"11:30\", \"12:00\", \"12:30\", \"15:30\", \"16:00\", \"16:30\", \"17:00\", \"17:30\", \"18:00\"], \"asesoresDisponibles\": [{\"id\": \"ASE015\", \"nombre\": \"Carmen Jim\u00e9nez L\u00f3pez\", \"especialidad\": \"hipotecas\"}, {\"id\": \"ASE016\", \"nombre\": \"Roberto Castillo Vega\", \"especialidad\": \"inversiones\"}, {\"id\": \"ASE017\", \"nombre\": \"Patricia Moreno Silva\", \"especialidad\": \"seguros\"}]}"
+        },
+        {
+          "name": "consultarHorarios - 200 alt_happy_weekend",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC003",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-02-10",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC003\", \"fecha\": \"2024-02-10\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"horariosDisponibles\": [\"10:00\", \"11:00\", \"12:00\"], \"asesoresDisponibles\": [{\"id\": \"ASE005\", \"nombre\": \"Carmen L\u00f3pez Herrera\", \"especialidad\": \"Productos de inversi\u00f3n\", \"experiencia\": \"8 a\u00f1os\"}, {\"id\": \"ASE006\", \"nombre\": \"Roberto Jim\u00e9nez Vega\", \"especialidad\": \"Seguros y pensiones\", \"experiencia\": \"12 a\u00f1os\"}]}"
+        },
+        {
+          "name": "consultarHorarios - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC002",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-12-25",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC002\", \"fecha\": \"2024-12-25\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"asesoresDisponibles\": [], \"horariosDisponibles\": []}"
+        },
+        {
+          "name": "consultarHorarios - 200 edge_far_future_date",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC012",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-08-30",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC012\", \"fecha\": \"2024-08-30\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"horariosDisponibles\": [], \"asesoresDisponibles\": [], \"mensaje\": \"Horarios no disponibles para fechas posteriores a 60 d\u00edas\", \"fechaLimite\": \"2024-06-15\"}"
+        },
+        {
+          "name": "consultarHorarios - 404 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC999",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-01-20",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC999\", \"fecha\": \"2024-01-20\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"SUCURSAL_NO_ENCONTRADA\", \"mensaje\": \"La sucursal SUC999 no existe o no est\u00e1 activa\", \"asesoresDisponibles\": [], \"horariosDisponibles\": []}"
+        },
+        {
+          "name": "consultarHorarios - 400 error_past_date",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC004",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2023-12-01",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC004\", \"fecha\": \"2023-12-01\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"FECHA_INVALIDA\", \"mensaje\": \"No es posible reservar citas en fechas pasadas\", \"codigo\": \"FH_002\", \"horariosDisponibles\": [], \"asesoresDisponibles\": []}"
+        },
+        {
+          "name": "consultarHorarios - 503 error_sucursal_closed",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC008",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-04-22",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"fecha\": \"2024-04-22\", \"sucursalId\": \"SUC008\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "503",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error\": \"SUCURSAL_CERRADA\", \"message\": \"La sucursal est\u00e1 temporalmente cerrada por mantenimiento\", \"horariosDisponibles\": [], \"asesoresDisponibles\": [], \"fechaReapertura\": \"2024-04-25\"}"
+        },
+        {
+          "name": "consultarHorarios - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarHorarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarHorarios"
+              ],
+              "query": [
+                {
+                  "key": "sucursalId",
+                  "value": "SUC001",
+                  "description": "ID de la sucursal seleccionada"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-01-15",
+                  "description": "Fecha deseada para la cita"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sucursalId\": \"SUC001\", \"fecha\": \"2024-01-15\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"asesoresDisponibles\": [{\"id\": \"ASE001\", \"nombre\": \"Mar\u00eda Garc\u00eda L\u00f3pez\", \"especialidad\": \"Hipotecas\"}, {\"id\": \"ASE002\", \"nombre\": \"Carlos Rodr\u00edguez Mart\u00edn\", \"especialidad\": \"Inversiones\"}], \"horariosDisponibles\": [{\"hora\": \"09:00\", \"asesorId\": \"ASE001\", \"disponible\": true}, {\"hora\": \"09:30\", \"asesorId\": \"ASE001\", \"disponible\": true}, {\"hora\": \"10:00\", \"asesorId\": \"ASE002\", \"disponible\": true}, {\"hora\": \"10:30\", \"asesorId\": \"ASE002\", \"disponible\": true}, {\"hora\": \"11:00\", \"asesorId\": \"ASE001\", \"disponible\": true}]}"
+        }
+      ]
+    },
+    {
+      "name": "reservarCita",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/reservarCita",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "reservarCita"
+          ],
+          "query": [
+            {
+              "key": "nombreCliente",
+              "value": "{{nombreCliente}}",
+              "description": "Nombre completo del cliente"
+            },
+            {
+              "key": "telefono",
+              "value": "{{telefono}}",
+              "description": "N\u00famero de tel\u00e9fono del cliente"
+            },
+            {
+              "key": "documentoId",
+              "value": "{{documentoId}}",
+              "description": "Documento de identidad del cliente"
+            },
+            {
+              "key": "sucursalId",
+              "value": "{{sucursalId}}",
+              "description": "ID de la sucursal"
+            },
+            {
+              "key": "fecha",
+              "value": "{{fecha}}",
+              "description": "Fecha de la cita"
+            },
+            {
+              "key": "hora",
+              "value": "{{hora}}",
+              "description": "Hora de la cita"
+            },
+            {
+              "key": "asesorId",
+              "value": "{{asesorId}}",
+              "description": "ID del asesor asignado"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombreCliente\": \"{{nombreCliente}}\",\n  \"telefono\": \"{{telefono}}\",\n  \"documentoId\": \"{{documentoId}}\",\n  \"sucursalId\": \"{{sucursalId}}\",\n  \"fecha\": \"{{fecha}}\",\n  \"hora\": \"{{hora}}\",\n  \"asesorId\": \"{{asesorId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "reservarCita - 200 alt_happy_business_client",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Miguel \u00c1ngel Rodr\u00edguez Pe\u00f1a",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "689234567",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "98765432D",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC003",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-02-05",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "11:30",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE003",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Miguel \u00c1ngel Rodr\u00edguez Pe\u00f1a\", \"telefono\": \"689234567\", \"documento\": \"98765432D\"}, \"cita\": {\"sucursalId\": \"SUC003\", \"fecha\": \"2024-02-05\", \"hora\": \"11:30\", \"asesorId\": \"ASE003\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estadoReserva\": \"CONFIRMADA\", \"numeroConfirmacion\": \"BC2024020511300003\", \"detallesCita\": {\"cliente\": {\"nombre\": \"Miguel \u00c1ngel Rodr\u00edguez Pe\u00f1a\", \"telefono\": \"689234567\", \"documento\": \"98765432D\"}, \"asesor\": {\"nombre\": \"Isabel Moreno Castro\", \"especialidad\": \"Banca empresarial\"}, \"sucursal\": {\"nombre\": \"Bancoppel Sevilla Centro\", \"direccion\": \"Calle Sierpes 42, 41004 Sevilla\"}, \"fechaHora\": \"2024-02-05T11:30:00\", \"duracionEstimada\": \"45 minutos\", \"recordatorio\": \"Se enviar\u00e1 SMS 24h antes\"}}"
+        },
+        {
+          "name": "reservarCita - 201 alt_happy_premium_client",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Francisco Javier Ruiz Herrera",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "634567890",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "33445566F",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC007",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-03-08",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "15:00",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE012",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Francisco Javier Ruiz Herrera\", \"telefono\": \"634567890\", \"documento\": \"33445566F\"}, \"cita\": {\"sucursalId\": \"SUC007\", \"fecha\": \"2024-03-08\", \"hora\": \"15:00\", \"asesorId\": \"ASE012\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "201",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"estadoReserva\": \"CONFIRMADA\", \"numeroConfirmacion\": \"BCL-2024-789123\", \"detallesCita\": {\"cliente\": {\"nombre\": \"Francisco Javier Ruiz Herrera\", \"telefono\": \"634567890\", \"tipoCliente\": \"PREMIUM\"}, \"sucursal\": {\"nombre\": \"Bancoppel Bilbao Centro\", \"direccion\": \"Gran V\u00eda, 88\"}, \"asesor\": {\"nombre\": \"Elena Navarro Prieto\", \"especialidad\": \"banca privada\"}, \"fechaHora\": \"2024-03-08T15:00:00\", \"serviciosSolicitados\": [\"gesti\u00f3n patrimonial\"], \"preparacionRequerida\": [\"documentos de ingresos\", \"extractos bancarios\"]}}"
+        },
+        {
+          "name": "reservarCita - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Laura Mart\u00edn D\u00edez",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "655111222",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "11223344C",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC001",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-12-31",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "14:00",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE001",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Laura Mart\u00edn D\u00edez\", \"telefono\": \"655111222\", \"documento\": \"11223344C\"}, \"cita\": {\"sucursalId\": \"SUC001\", \"fecha\": \"2024-12-31\", \"hora\": \"14:00\", \"asesorId\": \"ASE001\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estadoReserva\": \"PENDIENTE_CONFIRMACION\", \"numeroConfirmacion\": \"CITA-2024-999999\", \"detallesCita\": {\"cliente\": {\"nombre\": \"Laura Mart\u00edn D\u00edez\", \"telefono\": \"655111222\", \"documento\": \"11223344C\"}, \"sucursal\": {\"nombre\": \"Bancoppel Gran V\u00eda\", \"direccion\": \"Gran V\u00eda, 45, Madrid\"}, \"asesor\": {\"nombre\": \"Mar\u00eda Garc\u00eda L\u00f3pez\", \"especialidad\": \"Hipotecas\"}, \"fechaHora\": \"2024-12-31T14:00:00\", \"duracionEstimada\": \"30 minutos\", \"instrucciones\": \"Cita sujeta a confirmaci\u00f3n por horario especial\"}}"
+        },
+        {
+          "name": "reservarCita - 201 edge_last_minute_booking",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Alejandro Torres Mendoza",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "611222333",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "77889900G",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC010",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-01-30",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "13:45",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE020",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Alejandro Torres Mendoza\", \"telefono\": \"611222333\", \"documento\": \"77889900G\"}, \"cita\": {\"sucursalId\": \"SUC010\", \"fecha\": \"2024-01-30\", \"hora\": \"13:45\", \"asesorId\": \"ASE020\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "201",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"estadoReserva\": \"PENDIENTE_CONFIRMACION\", \"numeroConfirmacion\": \"BCL-2024-456789\", \"detallesCita\": {\"cliente\": {\"nombre\": \"Alejandro Torres Mendoza\", \"telefono\": \"611222333\"}, \"sucursal\": {\"nombre\": \"Bancoppel Santander Norte\", \"direccion\": \"Av. de los Castros, 42\"}, \"asesor\": {\"nombre\": \"Isabel Fern\u00e1ndez Cruz\", \"especialidad\": \"cuentas corrientes\"}, \"fechaHora\": \"2024-01-30T13:45:00\", \"advertencia\": \"Cita de \u00faltimo minuto - confirme su asistencia llamando al 942567890\", \"tiempoLimiteConfirmacion\": \"2024-01-30T11:00:00\"}}"
+        },
+        {
+          "name": "reservarCita - 409 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Pedro Gonz\u00e1lez S\u00e1nchez",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "677987654",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "87654321B",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC002",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-01-16",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "10:00",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE002",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Pedro Gonz\u00e1lez S\u00e1nchez\", \"telefono\": \"677987654\", \"documento\": \"87654321B\"}, \"cita\": {\"sucursalId\": \"SUC002\", \"fecha\": \"2024-01-16\", \"hora\": \"10:00\", \"asesorId\": \"ASE002\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "409",
+          "code": 409,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"HORARIO_NO_DISPONIBLE\", \"mensaje\": \"El horario seleccionado ya no est\u00e1 disponible\", \"estadoReserva\": \"RECHAZADA\", \"numeroConfirmacion\": null, \"detallesCita\": null}"
+        },
+        {
+          "name": "reservarCita - 409 error_duplicate_appointment",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Rosa Mar\u00eda V\u00e1zquez Gil",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "612345678",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "45678912E",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC001",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-01-25",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "16:00",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE004",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Rosa Mar\u00eda V\u00e1zquez Gil\", \"telefono\": \"612345678\", \"documento\": \"45678912E\"}, \"cita\": {\"sucursalId\": \"SUC001\", \"fecha\": \"2024-01-25\", \"hora\": \"16:00\", \"asesorId\": \"ASE004\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "409",
+          "code": 409,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"CITA_DUPLICADA\", \"mensaje\": \"Ya tiene una cita programada para el 2024-01-25 a las 10:30\", \"codigo\": \"CT_003\", \"estadoReserva\": \"RECHAZADA\", \"citaExistente\": {\"fecha\": \"2024-01-25\", \"hora\": \"10:30\", \"numeroConfirmacion\": \"BC2024012510300001\"}, \"numeroConfirmacion\": null, \"detallesCita\": null}"
+        },
+        {
+          "name": "reservarCita - 400 error_invalid_document",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Sof\u00eda Delgado Ramos",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "698765432",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "INVALID123",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC005",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-02-28",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "12:30",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE008",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Sof\u00eda Delgado Ramos\", \"telefono\": \"698765432\", \"documento\": \"INVALID123\"}, \"cita\": {\"sucursalId\": \"SUC005\", \"fecha\": \"2024-02-28\", \"hora\": \"12:30\", \"asesorId\": \"ASE008\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error\": \"DOCUMENTO_INVALIDO\", \"message\": \"El formato del documento de identidad no es v\u00e1lido\", \"estadoReserva\": \"RECHAZADA\", \"numeroConfirmacion\": null, \"detallesError\": {\"campo\": \"documento\", \"valorRecibido\": \"INVALID123\", \"formatoEsperado\": \"########[A-Z] (ej: 12345678A)\"}}"
+        },
+        {
+          "name": "reservarCita - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reservarCita",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reservarCita"
+              ],
+              "query": [
+                {
+                  "key": "nombreCliente",
+                  "value": "Ana Fern\u00e1ndez Ruiz",
+                  "description": "Nombre completo del cliente"
+                },
+                {
+                  "key": "telefono",
+                  "value": "666123456",
+                  "description": "N\u00famero de tel\u00e9fono del cliente"
+                },
+                {
+                  "key": "documentoId",
+                  "value": "12345678A",
+                  "description": "Documento de identidad del cliente"
+                },
+                {
+                  "key": "sucursalId",
+                  "value": "SUC001",
+                  "description": "ID de la sucursal"
+                },
+                {
+                  "key": "fecha",
+                  "value": "2024-01-15",
+                  "description": "Fecha de la cita"
+                },
+                {
+                  "key": "hora",
+                  "value": "09:30",
+                  "description": "Hora de la cita"
+                },
+                {
+                  "key": "asesorId",
+                  "value": "ASE001",
+                  "description": "ID del asesor asignado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente\": {\"nombre\": \"Ana Fern\u00e1ndez Ruiz\", \"telefono\": \"666123456\", \"documento\": \"12345678A\"}, \"cita\": {\"sucursalId\": \"SUC001\", \"fecha\": \"2024-01-15\", \"hora\": \"09:30\", \"asesorId\": \"ASE001\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"estadoReserva\": \"CONFIRMADA\", \"numeroConfirmacion\": \"CITA-2024-001234\", \"detallesCita\": {\"cliente\": {\"nombre\": \"Ana Fern\u00e1ndez Ruiz\", \"telefono\": \"666123456\", \"documento\": \"12345678A\"}, \"sucursal\": {\"nombre\": \"Bancoppel Gran V\u00eda\", \"direccion\": \"Gran V\u00eda, 45, Madrid\"}, \"asesor\": {\"nombre\": \"Mar\u00eda Garc\u00eda L\u00f3pez\", \"especialidad\": \"Hipotecas\"}, \"fechaHora\": \"2024-01-15T09:30:00\", \"duracionEstimada\": \"30 minutos\", \"instrucciones\": \"Traer DNI y documentaci\u00f3n relevante\"}}"
+        }
+      ]
+    },
+    {
+      "name": "consultarServicios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarServicios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarServicios"
+          ],
+          "query": [
+            {
+              "key": "tipoServicio",
+              "value": "{{tipoServicio}}",
+              "description": "Tipo de servicio bancario consultado"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tipoServicio\": \"{{tipoServicio}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "consultarServicios - 200 alt_happy_business_services",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "empresas",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"empresas\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"servicios\": [{\"id\": \"EMP001\", \"nombre\": \"Cuenta Corriente Empresarial\", \"categoria\": \"cuentas\", \"disponible\": true}, {\"id\": \"EMP002\", \"nombre\": \"L\u00ednea de Cr\u00e9dito Comercial\", \"categoria\": \"financiacion\", \"disponible\": true}, {\"id\": \"EMP003\", \"nombre\": \"Confirming de Proveedores\", \"categoria\": \"tesoreria\", \"disponible\": true}, {\"id\": \"EMP004\", \"nombre\": \"Gesti\u00f3n de N\u00f3minas\", \"categoria\": \"servicios\", \"disponible\": false, \"motivoNoDisponible\": \"En desarrollo\"}], \"descripcionServicios\": \"Soluciones financieras integrales para empresas de todos los tama\u00f1os, desde aut\u00f3nomos hasta grandes corporaciones\"}"
+        },
+        {
+          "name": "consultarServicios - 200 alt_happy_insurance",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "seguros",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"seguros\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"servicios\": [{\"id\": \"SEG001\", \"nombre\": \"Seguro de Vida\", \"categoria\": \"seguros\", \"disponible\": true}, {\"id\": \"SEG002\", \"nombre\": \"Seguro de Hogar\", \"categoria\": \"seguros\", \"disponible\": true}, {\"id\": \"SEG003\", \"nombre\": \"Seguro de Autom\u00f3vil\", \"categoria\": \"seguros\", \"disponible\": true}, {\"id\": \"SEG004\", \"nombre\": \"Seguro de Salud\", \"categoria\": \"seguros\", \"disponible\": false}], \"descripcionServicios\": \"Amplia gama de productos de seguros para proteger lo que m\u00e1s valoras: tu familia, tu hogar, tu veh\u00edculo y tu salud. Contamos con las mejores coberturas del mercado.\"}"
+        },
+        {
+          "name": "consultarServicios - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"servicios\": [], \"descripcionServicios\": \"Por favor, especifique un tipo de servicio v\u00e1lido: hipotecas, inversiones, seguros, cuentas\"}"
+        },
+        {
+          "name": "consultarServicios - 200 edge_numeric_service_type",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "123",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"123\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"servicios\": [], \"descripcionServicios\": \"No se encontraron servicios para el tipo especificado\", \"sugerencias\": [\"hipotecas\", \"cuentas\", \"prestamos\", \"seguros\", \"inversiones\", \"empresas\"], \"mensaje\": \"Utilice uno de los tipos de servicio sugeridos\"}"
+        },
+        {
+          "name": "consultarServicios - 400 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "criptomonedas",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"criptomonedas\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"TIPO_SERVICIO_INVALIDO\", \"mensaje\": \"El tipo de servicio 'criptomonedas' no est\u00e1 disponible\", \"servicios\": [], \"descripcionServicios\": \"\"}"
+        },
+        {
+          "name": "consultarServicios - 410 error_service_discontinued",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "divisas",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"divisas\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "410",
+          "code": 410,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error\": \"SERVICIO_DESCONTINUADO\", \"message\": \"El servicio de cambio de divisas ha sido descontinuado\", \"servicios\": [], \"descripcionServicios\": null, \"fechaDescontinuacion\": \"2023-12-01\", \"alternativas\": [\"Consulte con su asesor para opciones de transferencias internacionales\"]}"
+        },
+        {
+          "name": "consultarServicios - 503 error_service_maintenance",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "inversiones",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"inversiones\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "503",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"SERVICIO_MANTENIMIENTO\", \"mensaje\": \"El servicio de consulta de inversiones est\u00e1 temporalmente no disponible por mantenimiento programado\", \"codigo\": \"SV_503\", \"tiempoEstimadoRecuperacion\": \"2024-01-16T08:00:00Z\", \"servicios\": [], \"descripcionServicios\": null}"
+        },
+        {
+          "name": "consultarServicios - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarServicios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarServicios"
+              ],
+              "query": [
+                {
+                  "key": "tipoServicio",
+                  "value": "hipotecas",
+                  "description": "Tipo de servicio bancario consultado"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tipo\": \"hipotecas\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"servicios\": [{\"id\": \"HIP001\", \"nombre\": \"Hipoteca Fija\", \"categoria\": \"hipotecas\", \"duracionCita\": \"45 minutos\", \"documentosRequeridos\": [\"DNI\", \"N\u00f3minas \u00faltimos 3 meses\", \"Declaraci\u00f3n IRPF\"]}, {\"id\": \"HIP002\", \"nombre\": \"Hipoteca Variable\", \"categoria\": \"hipotecas\", \"duracionCita\": \"45 minutos\", \"documentosRequeridos\": [\"DNI\", \"N\u00f3minas \u00faltimos 3 meses\", \"Declaraci\u00f3n IRPF\"]}, {\"id\": \"HIP003\", \"nombre\": \"Reunificaci\u00f3n de Deudas\", \"categoria\": \"hipotecas\", \"duracionCita\": \"60 minutos\", \"documentosRequeridos\": [\"DNI\", \"Extractos bancarios\", \"Listado de deudas\"]}], \"descripcionServicios\": \"Servicios hipotecarios disponibles en nuestras sucursales con asesoramiento personalizado\"}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://a188cc91-0712-4cb3-b901-c5304b9cf79b.mock.pstmn.io"
+    },
+    {
+      "key": "ciudad",
+      "value": "sample_ciudad"
+    },
+    {
+      "key": "codigoPostal",
+      "value": "sample_codigoPostal"
+    },
+    {
+      "key": "activas",
+      "value": "sample_activas"
+    },
+    {
+      "key": "sucursalId",
+      "value": "sample_sucursalId"
+    },
+    {
+      "key": "fecha",
+      "value": "sample_fecha"
+    },
+    {
+      "key": "nombreCliente",
+      "value": "sample_nombreCliente"
+    },
+    {
+      "key": "telefono",
+      "value": "sample_telefono"
+    },
+    {
+      "key": "documentoId",
+      "value": "sample_documentoId"
+    },
+    {
+      "key": "hora",
+      "value": "sample_hora"
+    },
+    {
+      "key": "asesorId",
+      "value": "sample_asesorId"
+    },
+    {
+      "key": "tipoServicio",
+      "value": "sample_tipoServicio"
+    }
+  ]
+}

@@ -1,0 +1,431 @@
+{
+  "name": "Generated (2026-03-19 02:07)",
+  "description": "AI-generated mock data for Agente de Elegibilidad de Préstamos Interbank",
+  "source_type": "generated",
+  "is_active": false,
+  "web_actions": {
+    "calcularCapacidadPago": [
+      {
+        "scenario": "alto_patrimonio",
+        "description": "Cliente con alto patrimonio y excelente score",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": 240000,
+          "score_crediticio": 850,
+          "estado_laboral": "empresario",
+          "monto_solicitado": 150000
+        },
+        "response_body": {
+          "aprobado": true,
+          "capacidad_pago": 180000,
+          "monto_aprobado": 150000,
+          "tasa_sugerida": 16.5,
+          "plazo_recomendado": 60,
+          "cuota_mensual": 3650.75,
+          "ratio_endeudamiento": 18.25,
+          "categoria_cliente": "Premium",
+          "beneficios_adicionales": [
+            "Tasa VIP",
+            "Sin comisiones",
+            "Gestor personalizado",
+            "Aprobación express"
+          ]
+        },
+        "tester_prompt": "Informa que eres empresario con ingresos de S/240,000 anuales, score 850, y necesitas S/150,000."
+      },
+      {
+        "scenario": "datos_incompletos",
+        "description": "Faltan datos para el cálculo",
+        "response_status": 400,
+        "request_body": {
+          "ingreso_anual": 0,
+          "score_crediticio": 0,
+          "estado_laboral": "",
+          "monto_solicitado": 25000
+        },
+        "response_body": {
+          "codigo_error": "MISSING_DATA",
+          "mensaje": "Datos insuficientes para realizar el cálculo",
+          "campos_requeridos": [
+            "ingreso_anual",
+            "score_crediticio",
+            "estado_laboral"
+          ],
+          "detalle": "Todos los campos son obligatorios para la evaluación"
+        },
+        "tester_prompt": "Solicita calcular capacidad de pago pero proporciona información incompleta o en ceros."
+      },
+      {
+        "scenario": "edge_case",
+        "description": "Ingreso mínimo y score límite",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": 18000,
+          "score_crediticio": 300,
+          "estado_laboral": "empleado_dependiente",
+          "monto_solicitado": 5000
+        },
+        "response_body": {
+          "aprobado": false,
+          "capacidad_pago": 0,
+          "codigo_rechazo": "SCORE_TOO_LOW",
+          "mensaje": "Score crediticio insuficiente para otorgar crédito",
+          "score_minimo_requerido": 350,
+          "alternativas": [
+            "Préstamo con garantía hipotecaria",
+            "Préstamo con aval"
+          ]
+        },
+        "tester_prompt": "Proporciona ingresos de S/18,000 anuales, score 300, empleado dependiente, solicitando S/5,000."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Capacidad de pago insuficiente",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": 24000,
+          "score_crediticio": 450,
+          "estado_laboral": "independiente",
+          "monto_solicitado": 80000
+        },
+        "response_body": {
+          "aprobado": false,
+          "capacidad_pago": 15000,
+          "monto_solicitado": 80000,
+          "codigo_rechazo": "INSUFFICIENT_CAPACITY",
+          "mensaje": "El monto solicitado excede su capacidad de pago",
+          "monto_maximo_sugerido": 12000,
+          "recomendaciones": [
+            "Considere un monto menor",
+            "Mejore su score crediticio",
+            "Incluya un co-deudor"
+          ]
+        },
+        "tester_prompt": "Menciona que ganas S/24,000 anuales, score 450, eres independiente y solicitas S/80,000."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cálculo exitoso de capacidad de pago",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": 84000,
+          "score_crediticio": 720,
+          "estado_laboral": "empleado_dependiente",
+          "monto_solicitado": 35000
+        },
+        "response_body": {
+          "aprobado": true,
+          "capacidad_pago": 42000,
+          "monto_aprobado": 35000,
+          "tasa_sugerida": 19.9,
+          "plazo_recomendado": 36,
+          "cuota_mensual": 1285.5,
+          "ratio_endeudamiento": 18.35,
+          "observaciones": "Excelente perfil crediticio",
+          "condiciones_especiales": [
+            "Sin comisiones de evaluación",
+            "Tasa preferencial por buen historial"
+          ]
+        },
+        "tester_prompt": "Dile al agente que ganas S/84,000 al año, tienes score 720, eres empleado dependiente y quieres un préstamo de S/35,000."
+      }
+    ],
+    "consultarClienteExistente": [
+      {
+        "scenario": "cliente_inactivo",
+        "description": "Cliente existente pero con estado inactivo",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "existe": true,
+          "cliente_id": "CLI987654321",
+          "nombres": "María Isabel",
+          "apellidos": "Torres Vargas",
+          "documento": "25874163",
+          "tipo_documento": "DNI",
+          "estado": "inactivo",
+          "fecha_registro": "2015-08-22",
+          "productos_activos": [],
+          "fecha_inactivacion": "2023-06-10"
+        },
+        "tester_prompt": "Pregunta sobre tu estatus como cliente mencionando que hace tiempo no usas los servicios del banco."
+      },
+      {
+        "scenario": "edge_case",
+        "description": "Cliente con datos incompletos",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "existe": true,
+          "cliente_id": "CLI000000001",
+          "nombres": "",
+          "apellidos": "Datos Incompletos",
+          "documento": "00000000",
+          "tipo_documento": "DNI",
+          "estado": "pendiente_actualizacion",
+          "fecha_registro": "2024-01-01",
+          "productos_activos": []
+        },
+        "tester_prompt": "Consulta tu estatus como cliente mencionando que tus datos personales pueden estar incompletos."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Cliente no encontrado en la base de datos",
+        "response_status": 404,
+        "request_body": {},
+        "response_body": {
+          "existe": false,
+          "codigo_error": "CLI_NOT_FOUND",
+          "mensaje": "No se encontró información del cliente en nuestros registros",
+          "sugerencia": "Verifique sus datos o considere registrarse como nuevo cliente"
+        },
+        "tester_prompt": "Pregúntale al agente sobre tu estatus como cliente pero menciona que nunca has tenido productos con Interbank."
+      },
+      {
+        "scenario": "error_sistema",
+        "description": "Error temporal del sistema",
+        "response_status": 503,
+        "request_body": {},
+        "response_body": {
+          "codigo_error": "SYS_UNAVAILABLE",
+          "mensaje": "Servicio temporalmente no disponible",
+          "detalle": "Estamos realizando mantenimiento programado",
+          "tiempo_estimado_solucion": "15 minutos"
+        },
+        "tester_prompt": "Intenta consultar tu información como cliente cuando el sistema esté experimentando problemas técnicos."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cliente existente encontrado exitosamente",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "existe": true,
+          "cliente_id": "CLI001234567",
+          "nombres": "Carlos Eduardo",
+          "apellidos": "Mendoza Quispe",
+          "documento": "43785629",
+          "tipo_documento": "DNI",
+          "estado": "activo",
+          "fecha_registro": "2019-03-15",
+          "productos_activos": [
+            "cuenta_corriente",
+            "tarjeta_credito"
+          ]
+        },
+        "tester_prompt": "Dile al agente que quieres consultar si eres cliente existente de Interbank."
+      }
+    ],
+    "consultarProductosPrestamos": [
+      {
+        "scenario": "edge_case",
+        "description": "Lista vacía de productos",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "productos": [],
+          "mensaje": "No se encontraron productos que coincidan con los criterios",
+          "total_productos": 0
+        },
+        "tester_prompt": "Solicita información sobre productos de préstamos cuando la lista esté vacía."
+      },
+      {
+        "scenario": "error_autorizacion",
+        "description": "Error de autorización para consultar productos",
+        "response_status": 403,
+        "request_body": {},
+        "response_body": {
+          "codigo_error": "AUTH_REQUIRED",
+          "mensaje": "Se requiere autenticación para acceder a esta información",
+          "accion_requerida": "Debe iniciar sesión o proporcionar credenciales válidas"
+        },
+        "tester_prompt": "Intenta consultar productos de préstamos sin haberte identificado previamente con el agente."
+      },
+      {
+        "scenario": "error_case",
+        "description": "No hay productos disponibles temporalmente",
+        "response_status": 404,
+        "request_body": {},
+        "response_body": {
+          "codigo_error": "PROD_NOT_AVAILABLE",
+          "mensaje": "No hay productos de préstamos disponibles en este momento",
+          "detalle": "Los productos están siendo actualizados",
+          "contacto_alternativo": "Llame al 311-9000 para más información"
+        },
+        "tester_prompt": "Consulta sobre los productos de préstamos disponibles cuando no hay ofertas activas."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Lista completa de productos de préstamos disponibles",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "productos": [
+            {
+              "codigo": "PERS001",
+              "nombre": "Préstamo Personal Interbank",
+              "tipo": "personal",
+              "tasa_minima": 18.5,
+              "tasa_maxima": 35.9,
+              "monto_minimo": 3000,
+              "monto_maximo": 150000,
+              "plazo_minimo": 12,
+              "plazo_maximo": 60,
+              "moneda": "PEN"
+            },
+            {
+              "codigo": "VEH001",
+              "nombre": "Préstamo Vehicular",
+              "tipo": "vehicular",
+              "tasa_minima": 12.9,
+              "tasa_maxima": 24.5,
+              "monto_minimo": 15000,
+              "monto_maximo": 500000,
+              "plazo_minimo": 24,
+              "plazo_maximo": 84,
+              "moneda": "PEN"
+            },
+            {
+              "codigo": "HIP001",
+              "nombre": "Crédito Hipotecario MiVivienda",
+              "tipo": "hipotecario",
+              "tasa_minima": 7.95,
+              "tasa_maxima": 12.5,
+              "monto_minimo": 50000,
+              "monto_maximo": 2000000,
+              "plazo_minimo": 60,
+              "plazo_maximo": 300,
+              "moneda": "PEN"
+            }
+          ]
+        },
+        "tester_prompt": "Pregúntale al agente qué tipos de préstamos ofrece Interbank y cuáles son sus condiciones."
+      },
+      {
+        "scenario": "productos_limitados",
+        "description": "Solo algunos productos disponibles por región",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "productos": [
+            {
+              "codigo": "PERS001",
+              "nombre": "Préstamo Personal Básico",
+              "tipo": "personal",
+              "tasa_minima": 22.9,
+              "tasa_maxima": 39.9,
+              "monto_minimo": 1000,
+              "monto_maximo": 50000,
+              "plazo_minimo": 6,
+              "plazo_maximo": 36,
+              "moneda": "PEN",
+              "restricciones": "Disponible solo en Lima Metropolitana"
+            }
+          ],
+          "mensaje": "Productos limitados por ubicación geográfica"
+        },
+        "tester_prompt": "Pregunta sobre préstamos disponibles mencionando que vives en una ciudad fuera de Lima."
+      }
+    ],
+    "verificarPrestamoPreaprobado": [
+      {
+        "scenario": "edge_case",
+        "description": "DNI con formato inválido",
+        "response_status": 400,
+        "request_body": {
+          "documento_identidad": "00000000",
+          "tipo_prestamo": "personal"
+        },
+        "response_body": {
+          "preaprobado": false,
+          "codigo_error": "INVALID_DOCUMENT",
+          "mensaje": "Número de documento inválido",
+          "detalle": "El DNI debe tener 8 dígitos válidos",
+          "formato_esperado": "########"
+        },
+        "tester_prompt": "Proporciona un DNI inválido como 00000000 y pregunta sobre préstamos preaprobados."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Cliente sin préstamos preaprobados",
+        "response_status": 404,
+        "request_body": {
+          "documento_identidad": "87654321",
+          "tipo_prestamo": "personal"
+        },
+        "response_body": {
+          "preaprobado": false,
+          "codigo_error": "NO_PREAPPROVED",
+          "mensaje": "No se encontraron préstamos preaprobados para este cliente",
+          "alternativas": "Puede aplicar a una evaluación crediticia estándar",
+          "productos_sugeridos": [
+            "Préstamo Personal Básico"
+          ]
+        },
+        "tester_prompt": "Usa el DNI 87654321 y consulta si tienes préstamos preaprobados sabiendo que no calificas."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cliente con préstamo preaprobado exitosamente",
+        "response_status": 200,
+        "request_body": {
+          "documento_identidad": "43785629",
+          "tipo_prestamo": "personal"
+        },
+        "response_body": {
+          "preaprobado": true,
+          "monto_preaprobado": 45000,
+          "tasa_ofrecida": 21.5,
+          "plazo_maximo": 48,
+          "moneda": "PEN",
+          "vigencia_oferta": "2024-12-31",
+          "codigo_preaprobacion": "PRE2024001234",
+          "requisitos": [
+            "Copia de DNI",
+            "Último recibo de sueldo",
+            "Estados de cuenta últimos 3 meses"
+          ]
+        },
+        "tester_prompt": "Proporciona tu DNI 43785629 y pregunta si tienes algún préstamo personal preaprobado."
+      },
+      {
+        "scenario": "oferta_vencida",
+        "description": "Préstamo preaprobado pero oferta vencida",
+        "response_status": 200,
+        "request_body": {
+          "documento_identidad": "12345678",
+          "tipo_prestamo": "personal"
+        },
+        "response_body": {
+          "preaprobado": false,
+          "monto_anterior": 30000,
+          "fecha_vencimiento": "2024-01-15",
+          "codigo_error": "OFFER_EXPIRED",
+          "mensaje": "La oferta preaprobada ha vencido",
+          "accion_sugerida": "Solicite una nueva evaluación crediticia"
+        },
+        "tester_prompt": "Consulta con DNI 12345678 sobre préstamos preaprobados que pudieron haber vencido."
+      },
+      {
+        "scenario": "tipo_prestamo_invalido",
+        "description": "Tipo de préstamo no válido",
+        "response_status": 400,
+        "request_body": {
+          "documento_identidad": "98765432",
+          "tipo_prestamo": "empresarial"
+        },
+        "response_body": {
+          "codigo_error": "INVALID_LOAN_TYPE",
+          "mensaje": "Tipo de préstamo no válido para preaprobaciones",
+          "tipos_validos": [
+            "personal",
+            "vehicular",
+            "hipotecario"
+          ],
+          "detalle": "Los préstamos empresariales requieren evaluación especializada"
+        },
+        "tester_prompt": "Usa DNI 98765432 y pregunta sobre préstamos empresariales preaprobados."
+      }
+    ]
+  }
+}

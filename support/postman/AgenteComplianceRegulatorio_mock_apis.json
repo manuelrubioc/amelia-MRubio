@@ -1,0 +1,775 @@
+{
+  "info": {
+    "name": "Agente de Verificaci\u00f3n de Cumplimiento Regulatorio - Mock APIs",
+    "description": "Auto-generated mock APIs for Agente de Verificaci\u00f3n de Cumplimiento Regulatorio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "executeComplianceCheck",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/executeComplianceCheck",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "executeComplianceCheck"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customer_id\": \"{{customer_id}}\",\n  \"product_description\": \"{{product_description}}\",\n  \"total_investment_amount\": \"{{total_investment_amount}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "executeComplianceCheck - 200 OK",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/executeComplianceCheck",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "executeComplianceCheck"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"{{customer_id}}\",\n  \"product_description\": \"{{product_description}}\",\n  \"total_investment_amount\": \"{{total_investment_amount}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"compliance_recommendation\": \"sample_compliance_recommendation\",\n    \"risk_classification\": \"sample_risk_classification\",\n    \"regulatory_findings\": \"sample_regulatory_findings\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "getCustomerProfile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/getCustomerProfile",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "getCustomerProfile"
+          ],
+          "query": [
+            {
+              "key": "customer_id",
+              "value": "{{customer_id}}",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "getCustomerProfile - 200 edge_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/getCustomerProfile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "getCustomerProfile"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "{{customer_id}}",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"customer_id\": \"CUST-20241201-002\", \"full_name\": \"Jos\u00e9 Carlos R\u00edos\", \"document_type\": \"DNI\", \"document_number\": \"12345678\", \"risk_profile\": null, \"customer_segment\": \"BANCA_PERSONAL\", \"account_opening_date\": \"2024-11-30\", \"monthly_income\": null, \"investment_experience\": null, \"kyc_status\": \"PENDIENTE\", \"last_update\": \"2024-12-01T08:00:00Z\"}}"
+        },
+        {
+          "name": "getCustomerProfile - 404 error_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/getCustomerProfile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "getCustomerProfile"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "{{customer_id}}",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"CUSTOMER_NOT_FOUND\", \"message\": \"No se encontr\u00f3 informaci\u00f3n del cliente en nuestros registros\", \"details\": \"Verifique que haya iniciado sesi\u00f3n correctamente\"}"
+        },
+        {
+          "name": "getCustomerProfile - 200 happy_path",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/getCustomerProfile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "getCustomerProfile"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "{{customer_id}}",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"customer_id\": \"CUST-20241201-001\", \"full_name\": \"Mar\u00eda Elena Vargas Mendoza\", \"document_type\": \"DNI\", \"document_number\": \"45678912\", \"risk_profile\": \"MODERADO\", \"customer_segment\": \"BANCA_PERSONAL\", \"account_opening_date\": \"2019-03-15\", \"monthly_income\": 8500.00, \"investment_experience\": \"INTERMEDIO\", \"kyc_status\": \"COMPLETO\", \"last_update\": \"2024-11-28T10:30:00Z\"}}"
+        },
+        {
+          "name": "getCustomerProfile - 200 high_value_customer",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/getCustomerProfile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "getCustomerProfile"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "{{customer_id}}",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"customer_id\": \"CUST-20241201-003\", \"full_name\": \"Roberto Alejandro Castillo Herrera\", \"document_type\": \"DNI\", \"document_number\": \"87654321\", \"risk_profile\": \"AGRESIVO\", \"customer_segment\": \"BANCA_PRIVADA\", \"account_opening_date\": \"2015-08-20\", \"monthly_income\": 45000.00, \"investment_experience\": \"EXPERTO\", \"kyc_status\": \"COMPLETO\", \"last_update\": \"2024-11-25T14:20:00Z\"}}"
+        },
+        {
+          "name": "getCustomerProfile - 503 system_maintenance",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/getCustomerProfile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "getCustomerProfile"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "{{customer_id}}",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "status": "503",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"SERVICE_UNAVAILABLE\", \"message\": \"El servicio se encuentra temporalmente no disponible por mantenimiento\", \"details\": \"Intente nuevamente en unos minutos\", \"retry_after\": 300}"
+        }
+      ]
+    },
+    {
+      "name": "validateSBSCompliance",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/validateSBSCompliance",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "validateSBSCompliance"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "validateSBSCompliance - 200 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/validateSBSCompliance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "validateSBSCompliance"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_id\": \"CUST-20241201-003\", \"product_type\": \"Dep\u00f3sito a Plazo\", \"investment_amount\": \"500\", \"customer_profile\": \"CONSERVADOR\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"validation_id\": \"SBS-VAL-20241201-002\", \"compliance_status\": \"APROBADO\", \"sbs_requirements_met\": true, \"regulatory_limits\": {\"max_investment_allowed\": 25000.00, \"current_exposure\": 500.00, \"remaining_capacity\": 24500.00}, \"validation_timestamp\": \"2024-12-01T16:00:00Z\", \"expiry_date\": \"2024-12-31T23:59:59Z\", \"warnings\": [\"Monto cercano al m\u00ednimo requerido\"]}}"
+        },
+        {
+          "name": "validateSBSCompliance - 400 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/validateSBSCompliance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "validateSBSCompliance"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_id\": \"CUST-20241201-002\", \"product_type\": \"Fondo Mutuo Agresivo\", \"investment_amount\": \"100000\", \"customer_profile\": \"CONSERVADOR\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"SBS_LIMIT_EXCEEDED\", \"message\": \"El monto solicitado excede los l\u00edmites regulatorios establecidos por la SBS\", \"details\": {\"max_allowed\": 25000.00, \"requested_amount\": 100000.00, \"customer_limit_type\": \"PERFIL_CONSERVADOR\"}, \"regulatory_reference\": \"Circular SBS G-140-2008\"}"
+        },
+        {
+          "name": "validateSBSCompliance - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/validateSBSCompliance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "validateSBSCompliance"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_id\": \"CUST-20241201-001\", \"product_type\": \"Fondo Mutuo Conservador\", \"investment_amount\": \"15000\", \"customer_profile\": \"MODERADO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"validation_id\": \"SBS-VAL-20241201-001\", \"compliance_status\": \"APROBADO\", \"sbs_requirements_met\": true, \"regulatory_limits\": {\"max_investment_allowed\": 50000.00, \"current_exposure\": 15000.00, \"remaining_capacity\": 35000.00}, \"validation_timestamp\": \"2024-12-01T15:30:00Z\", \"expiry_date\": \"2024-12-31T23:59:59Z\"}}"
+        },
+        {
+          "name": "validateSBSCompliance - 403 kyc_incomplete",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/validateSBSCompliance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "validateSBSCompliance"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_id\": \"CUST-20241201-004\", \"product_type\": \"Fondo Mutuo Mixto\", \"investment_amount\": \"10000\", \"customer_profile\": \"PENDIENTE\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "403",
+          "code": 403,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"KYC_INCOMPLETE\", \"message\": \"No es posible procesar la solicitud debido a informaci\u00f3n KYC incompleta\", \"details\": {\"missing_documents\": [\"Declaraci\u00f3n Jurada de Ingresos\", \"Evaluaci\u00f3n de Perfil de Riesgo\"], \"required_actions\": [\"Completar evaluaci\u00f3n en oficina\", \"Actualizar informaci\u00f3n patrimonial\"]}, \"next_steps\": \"Ac\u00e9rquese a cualquier oficina Interbank para completar su perfil\"}"
+        },
+        {
+          "name": "validateSBSCompliance - 400 product_restricted",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/validateSBSCompliance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "validateSBSCompliance"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_id\": \"CUST-20241201-005\", \"product_type\": \"Derivados Financieros\", \"investment_amount\": \"25000\", \"customer_profile\": \"MODERADO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"PRODUCT_RESTRICTED\", \"message\": \"El producto solicitado no est\u00e1 disponible para su segmento de cliente\", \"details\": {\"required_segment\": \"BANCA_PRIVADA\", \"current_segment\": \"BANCA_PERSONAL\", \"minimum_patrimony\": 500000.00}, \"alternative_products\": [\"Fondo Mutuo Balanceado\", \"Dep\u00f3sito Estructurado\"]}"
+        }
+      ]
+    },
+    {
+      "name": "checkRiskCompatibility",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/checkRiskCompatibility",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "checkRiskCompatibility"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "checkRiskCompatibility - 400 edge_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/checkRiskCompatibility",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkRiskCompatibility"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_risk_profile\": \"NO_DEFINIDO\", \"product_description\": \"Fondo Mutuo Mixto\", \"investment_amount\": \"5000\", \"sbs_validation\": \"PENDIENTE\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"RISK_PROFILE_REQUIRED\", \"message\": \"Es necesario completar la evaluaci\u00f3n de perfil de riesgo antes de continuar\", \"details\": {\"required_steps\": [\"Completar cuestionario de perfil\", \"Validaci\u00f3n presencial\", \"Aprobaci\u00f3n de asesor\"], \"estimated_time\": \"15-20 minutos\"}, \"scheduling_options\": {\"online_assessment\": true, \"branch_appointment\": true}}"
+        },
+        {
+          "name": "checkRiskCompatibility - 400 error_case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/checkRiskCompatibility",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkRiskCompatibility"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_risk_profile\": \"CONSERVADOR\", \"product_description\": \"Fondo de Acciones Internacionales\", \"investment_amount\": \"30000\", \"sbs_validation\": \"APROBADO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"RISK_INCOMPATIBLE\", \"message\": \"El producto seleccionado no es compatible con su perfil de riesgo\", \"details\": {\"product_risk_level\": \"ALTO\", \"customer_risk_tolerance\": \"BAJO\", \"compatibility_score\": 25, \"risk_mismatch\": \"CRITICO\"}, \"alternative_products\": [\"Dep\u00f3sito a Plazo\", \"Fondo Mutuo de Renta Fija\", \"Bonos del Tesoro\"]}"
+        },
+        {
+          "name": "checkRiskCompatibility - 200 happy_path",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/checkRiskCompatibility",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkRiskCompatibility"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_risk_profile\": \"MODERADO\", \"product_description\": \"Fondo Mutuo Balanceado\", \"investment_amount\": \"20000\", \"sbs_validation\": \"APROBADO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"compatibility_id\": \"RISK-COMP-20241201-001\", \"compatibility_status\": \"COMPATIBLE\", \"risk_assessment\": {\"product_risk_level\": \"MEDIO\", \"customer_risk_tolerance\": \"MEDIO\", \"compatibility_score\": 95}, \"recommendations\": {\"allocation_percentage\": 80, \"suggested_amount\": 16000.00, \"diversification_advice\": \"Se recomienda diversificar con instrumentos de menor riesgo\"}, \"approval_timestamp\": \"2024-12-01T17:15:00Z\"}}"
+        },
+        {
+          "name": "checkRiskCompatibility - 200 partial_compatibility",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/checkRiskCompatibility",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkRiskCompatibility"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_risk_profile\": \"MODERADO\", \"product_description\": \"Fondo de Renta Variable Emergente\", \"investment_amount\": \"40000\", \"sbs_validation\": \"APROBADO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": true, \"data\": {\"compatibility_id\": \"RISK-COMP-20241201-002\", \"compatibility_status\": \"PARCIALMENTE_COMPATIBLE\", \"risk_assessment\": {\"product_risk_level\": \"MEDIO_ALTO\", \"customer_risk_tolerance\": \"MEDIO\", \"compatibility_score\": 65}, \"recommendations\": {\"allocation_percentage\": 40, \"suggested_amount\": 16000.00, \"warnings\": [\"Considere diversificar con activos m\u00e1s conservadores\", \"Monitoree regularmente la inversi\u00f3n\"]}, \"approval_timestamp\": \"2024-12-01T17:45:00Z\"}}"
+        },
+        {
+          "name": "checkRiskCompatibility - 400 sbs_validation_failed",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/checkRiskCompatibility",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkRiskCompatibility"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"customer_risk_profile\": \"AGRESIVO\", \"product_description\": \"Fondo Hedge\", \"investment_amount\": \"75000\", \"sbs_validation\": \"RECHAZADO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"success\": false, \"error_code\": \"SBS_VALIDATION_FAILED\", \"message\": \"No es posible evaluar compatibilidad debido a validaci\u00f3n SBS fallida\", \"details\": {\"sbs_status\": \"RECHAZADO\", \"blocking_reason\": \"L\u00edmites regulatorios excedidos\", \"required_action\": \"Resolver validaci\u00f3n SBS primero\"}, \"next_steps\": \"Contacte a su asesor para revisar los l\u00edmites de inversi\u00f3n\"}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://087ae63d-5364-4765-ab99-756a53b9c34b.mock.pstmn.io"
+    },
+    {
+      "key": "customer_id",
+      "value": "sample_customer_id"
+    },
+    {
+      "key": "product_description",
+      "value": "sample_product_description"
+    },
+    {
+      "key": "total_investment_amount",
+      "value": "sample_total_investment_amount"
+    }
+  ]
+}
