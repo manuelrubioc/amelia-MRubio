@@ -1,0 +1,1197 @@
+{
+  "info": {
+    "name": "Asistente de Pedidos Agrosuper - Mock APIs",
+    "description": "Auto-generated mock APIs for Asistente de Pedidos Agrosuper",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "consultarPedidoProgramado",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarPedidoProgramado",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarPedidoProgramado"
+          ],
+          "query": [
+            {
+              "key": "clienteId",
+              "value": "{{clienteId}}",
+              "description": "ID \u00fanico del cliente"
+            },
+            {
+              "key": "fechaEntrega",
+              "value": "{{fechaEntrega}}",
+              "description": "Fecha de entrega programada"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "consultarPedidoProgramado - 200 alt_happy_cliente_frecuente",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-78901",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-02-01",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"historialPedidos\": [{\"numero\": \"PED-890123\", \"fecha\": \"2024-01-15\", \"total\": 89500, \"estado\": \"entregado\"}, {\"numero\": \"PED-890124\", \"fecha\": \"2024-01-22\", \"total\": 67800, \"estado\": \"entregado\"}], \"pedidoActual\": {\"numero\": \"PED-890125\", \"productos\": [\"AGS-201:2kg\", \"AGS-150:1kg\"], \"total\": 24980, \"estado\": \"confirmado\"}, \"proximaEntrega\": {\"fecha\": \"2024-02-08\", \"horaEstimada\": \"10:30\", \"direccion\": \"Las Condes, Santiago\"}}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 200 alt_happy_distribuidor_regional",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-85432",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-02-15",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"fechaEntrega\": \"2024-02-15\", \"pedidoActual\": \"AGS-450:25kg Lomo Vetado Premium, AGS-301:15kg Pechuga Pollo Org\u00e1nica, AGS-127:8kg Costillar Cerdo\", \"totalAproximado\": \"$487.650\"}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 200 edge_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-54321",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-01-27",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"historialPedidos\": [], \"pedidoActual\": null, \"proximaEntrega\": null, \"mensaje\": \"El cliente no tiene pedidos programados\"}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 200 edge_cliente_nuevo_sin_historial",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-99998",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-02-10",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"historialPedidos\": [], \"pedidoActual\": null, \"proximaEntrega\": null, \"mensaje\": \"Cliente nuevo - sin historial de pedidos\", \"beneficiosNuevoCliente\": [{\"tipo\": \"descuento\", \"valor\": \"10%\", \"vigencia\": \"primer pedido\"}]}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 200 edge_pedido_vacio_fecha_limite",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-13579",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-03-31",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"fechaEntrega\": \"2024-03-31\", \"pedidoActual\": \"\", \"totalAproximado\": \"$0\"}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 404 error_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-99999",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-01-26",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"CLIENTE_NO_ENCONTRADO\", \"mensaje\": \"El cliente con ID 'CLI-99999' no existe en nuestro sistema\", \"codigo_error\": \"404_CLIENT_NOT_FOUND\"}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 403 error_cliente_suspendido",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-00001",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-02-03",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "403",
+          "code": 403,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"CLIENTE_SUSPENDIDO\", \"mensaje\": \"Cliente suspendido por pagos pendientes\", \"montoPendiente\": 125900, \"contacto\": \"+56 2 2820 8000\"}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 400 error_fecha_formato_invalido",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-76543",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "15/02/2024",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"FECHA_INVALIDA\", \"mensaje\": \"Formato de fecha debe ser YYYY-MM-DD\", \"fechaEntrega\": null, \"pedidoActual\": null, \"totalAproximado\": null}"
+        },
+        {
+          "name": "consultarPedidoProgramado - 200 happy_path",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarPedidoProgramado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarPedidoProgramado"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "CLI-12345",
+                  "description": "ID \u00fanico del cliente"
+                },
+                {
+                  "key": "fechaEntrega",
+                  "value": "2024-01-25",
+                  "description": "Fecha de entrega programada"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"historialPedidos\": [{\"numeroPedido\": \"PED-789012\", \"fecha\": \"2024-01-18\", \"total\": 87500, \"estado\": \"entregado\"}, {\"numeroPedido\": \"PED-789013\", \"fecha\": \"2024-01-11\", \"total\": 65200, \"estado\": \"entregado\"}], \"pedidoActual\": {\"numeroPedido\": \"PED-789014\", \"fecha\": \"2024-01-25\", \"productos\": [{\"nombre\": \"Pollo Entero Super Fresco\", \"cantidad\": 5, \"precio\": 3290}], \"total\": 16450, \"estado\": \"programado\"}, \"proximaEntrega\": {\"fecha\": \"2024-02-01\", \"horario\": \"09:00-12:00\", \"direccion\": \"Av. Providencia 1234, Santiago\"}}"
+        }
+      ]
+    },
+    {
+      "name": "consultarCatalogoProductos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/consultarCatalogoProductos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "consultarCatalogoProductos"
+          ],
+          "query": [
+            {
+              "key": "categoria",
+              "value": "{{categoria}}",
+              "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+            },
+            {
+              "key": "busqueda",
+              "value": "{{busqueda}}",
+              "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "consultarCatalogoProductos - 200 alt_happy_busqueda_especifica",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "vacuno",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "lomo vetado",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"codigo\": \"AGS-450\", \"nombre\": \"Lomo Vetado Premium\", \"precio\": \"$18.990/kg\", \"stock\": \"Disponible\", \"origen\": \"Regi\u00f3n de Los Lagos\"}, {\"codigo\": \"AGS-451\", \"nombre\": \"Lomo Vetado Tradicional\", \"precio\": \"$15.490/kg\", \"stock\": \"Disponible\", \"origen\": \"Regi\u00f3n del Maule\"}], \"promociones\": [{\"tipo\": \"Descuento por volumen\", \"descripcion\": \"15% descuento comprando m\u00e1s de 10kg\", \"vigencia\": \"Hasta 28/02/2024\"}]}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 200 alt_happy_premium_products",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "cerdo",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "{{busqueda}}",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"codigo\": \"AGS-201\", \"nombre\": \"Lomo Premium Agrosuper\", \"precio\": 8990, \"unidad\": \"kg\", \"disponibilidad\": \"alta\", \"descripcion\": \"Lomo de cerdo premium sin aditivos\"}, {\"codigo\": \"AGS-202\", \"nombre\": \"Chuletas Premium\", \"precio\": 6490, \"unidad\": \"kg\", \"disponibilidad\": \"media\"}], \"promociones\": [{\"tipo\": \"descuento\", \"descripcion\": \"15% descuento en compras sobre $50.000\", \"vigencia\": \"2024-02-15\"}]}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 200 edge_busqueda_caracteres_especiales",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "embutidos",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "pollo & jam\u00f3n",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [], \"promociones\": []}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 200 edge_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "pavo",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "{{busqueda}}",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [], \"promociones\": [], \"mensaje\": \"No hay productos disponibles para la categor\u00eda y tipo especificado\"}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 200 edge_sin_stock_temporada",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "vacuno",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "{{busqueda}}",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [], \"promociones\": [], \"mensaje\": \"Productos temporalmente sin stock debido a alta demanda navide\u00f1a\", \"fechaReposicion\": \"2024-02-05\"}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 404 error_case",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "mariscos",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "{{busqueda}}",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": \"CATEGORIA_NO_ENCONTRADA\", \"mensaje\": \"La categor\u00eda 'mariscos' no est\u00e1 disponible en nuestro cat\u00e1logo\", \"categorias_disponibles\": [\"pollo\", \"cerdo\", \"pavo\", \"embutidos\"]}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 404 error_categoria_discontinuada",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "cordero",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "{{busqueda}}",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"CAT_DISCONTINUADA\", \"mensaje\": \"La categor\u00eda 'cordero' ha sido discontinuada en nuestra l\u00ednea de productos\", \"sugerencias\": [\"cerdo\", \"vacuno\", \"pollo\"]}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 503 error_categoria_mantenimiento",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "pescados",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "salm\u00f3n",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "503",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"CATEGORIA_MANTENIMIENTO\", \"mensaje\": \"Categor\u00eda pescados en mantenimiento hasta las 18:00 hrs\", \"productos\": [], \"promociones\": []}"
+        },
+        {
+          "name": "consultarCatalogoProductos - 200 happy_path",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/consultarCatalogoProductos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "consultarCatalogoProductos"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "pollo",
+                  "description": "Categor\u00eda de producto (pollo, cerdo, vacuno, cecinas)"
+                },
+                {
+                  "key": "busqueda",
+                  "value": "{{busqueda}}",
+                  "description": "T\u00e9rmino de b\u00fasqueda espec\u00edfico"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"productos\": [{\"id\": \"AGS-001\", \"nombre\": \"Pollo Entero Super Fresco\", \"categoria\": \"pollo\", \"precio\": 3290, \"unidad\": \"kg\", \"stock\": 150, \"descripcion\": \"Pollo entero fresco de primera calidad\"}, {\"id\": \"AGS-002\", \"nombre\": \"Pechuga de Pollo Deshuesada\", \"categoria\": \"pollo\", \"precio\": 5890, \"unidad\": \"kg\", \"stock\": 85, \"descripcion\": \"Pechuga de pollo sin hueso ni piel\"}], \"promociones\": [{\"tipo\": \"descuento\", \"descripcion\": \"15% descuento en compras sobre $50.000\", \"vigencia\": \"2024-01-31\"}]}"
+        }
+      ]
+    },
+    {
+      "name": "calcularPrecioPublico",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/calcularPrecioPublico",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "calcularPrecioPublico"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"precioNeto\": \"{{precioNeto}}\",\n  \"conIva\": \"{{conIva}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "calcularPrecioPublico - 200 alt_happy_precio_alto_sin_iva",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/calcularPrecioPublico",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calcularPrecioPublico"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"precioNeto\": 89500, \"conIva\": false}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"margenGanancia\": \"28.5%\", \"precioPublico\": \"$115.015\"}"
+        },
+        {
+          "name": "calcularPrecioPublico - 200 edge_precio_minimo_con_iva",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/calcularPrecioPublico",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calcularPrecioPublico"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"precioNeto\": 1, \"conIva\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"margenGanancia\": \"25.0%\", \"precioPublico\": \"$1\"}"
+        },
+        {
+          "name": "calcularPrecioPublico - 400 error_precio_negativo",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/calcularPrecioPublico",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calcularPrecioPublico"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"precioNeto\": -1500, \"conIva\": true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"PRECIO_INVALIDO\", \"mensaje\": \"El precio neto no puede ser negativo\", \"margenGanancia\": null, \"precioPublico\": null}"
+        }
+      ]
+    },
+    {
+      "name": "registrarPedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/registrarPedido",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "registrarPedido"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clienteId\": \"{{clienteId}}\",\n  \"productos\": \"{{productos}}\",\n  \"fechaEntrega\": \"{{fechaEntrega}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "registrarPedido - 200 alt_happy_pedido_empresarial",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarPedido",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarPedido"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"clienteId\": \"CLI-CORP001\", \"productos\": \"AGS-450:50kg,AGS-301:30kg,AGS-127:20kg,AGS-205:15kg\", \"fechaEntrega\": \"2024-02-20\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"numeroOrden\": \"ORD-240220-8847\", \"pedidoConfirmado\": true, \"totalFinal\": \"$1.847.320\"}"
+        },
+        {
+          "name": "registrarPedido - 200 edge_pedido_cantidad_fraccionaria_minima",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarPedido",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarPedido"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"clienteId\": \"CLI-24680\", \"productos\": \"AGS-105:0.05kg\", \"fechaEntrega\": \"2024-02-14\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"numeroOrden\": \"ORD-240214-0051\", \"pedidoConfirmado\": true, \"totalFinal\": \"$425\"}"
+        },
+        {
+          "name": "registrarPedido - 422 error_producto_descontinuado",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/registrarPedido",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "registrarPedido"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"clienteId\": \"CLI-55667\", \"productos\": \"AGS-999:2kg,AGS-301:1kg\", \"fechaEntrega\": \"2024-02-18\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "422",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\"error\": true, \"codigo\": \"PRODUCTO_DESCONTINUADO\", \"mensaje\": \"El producto AGS-999 ha sido descontinuado\", \"numeroOrden\": null, \"pedidoConfirmado\": false, \"totalFinal\": null}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://1c583435-0d22-4b3a-9318-2763f560fb6b.mock.pstmn.io"
+    },
+    {
+      "key": "clienteId",
+      "value": "sample_clienteId"
+    },
+    {
+      "key": "fechaEntrega",
+      "value": "sample_fechaEntrega"
+    },
+    {
+      "key": "categoria",
+      "value": "sample_categoria"
+    },
+    {
+      "key": "busqueda",
+      "value": "sample_busqueda"
+    },
+    {
+      "key": "precioNeto",
+      "value": "sample_precioNeto"
+    },
+    {
+      "key": "conIva",
+      "value": "sample_conIva"
+    },
+    {
+      "key": "productos",
+      "value": "sample_productos"
+    }
+  ]
+}

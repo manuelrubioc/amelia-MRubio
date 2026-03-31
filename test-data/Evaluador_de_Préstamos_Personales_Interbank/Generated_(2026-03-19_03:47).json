@@ -1,0 +1,499 @@
+{
+  "name": "Generated (2026-03-19 03:47)",
+  "description": "AI-generated mock data for Agente de Elegibilidad de Préstamos Interbank",
+  "source_type": "generated",
+  "is_active": false,
+  "web_actions": {
+    "calcularCapacidadPago": [
+      {
+        "scenario": "edge_case",
+        "description": "Ingresos mínimos para evaluación",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "18000",
+          "estado_laboral": "empleado_dependiente",
+          "monto_solicitado": "5000"
+        },
+        "response_body": {
+          "success": true,
+          "capacidad_pago": {
+            "ingreso_mensual": 1500,
+            "gastos_estimados": 1200,
+            "ingreso_disponible": 300,
+            "capacidad_endeudamiento": 180,
+            "ratio_endeudamiento": "12%",
+            "monto_maximo_aprobable": 8000,
+            "evaluacion": "CONDICIONAL",
+            "condiciones": [
+              "Requiere aval",
+              "Plazo máximo 24 meses"
+            ],
+            "advertencia": "Ingresos en el límite mínimo"
+          }
+        },
+        "tester_prompt": "Indica que tus ingresos anuales son S/ 18,000, eres empleado dependiente y solicitas un préstamo de S/ 5,000."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Capacidad de pago insuficiente",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "36000",
+          "estado_laboral": "independiente",
+          "monto_solicitado": "120000"
+        },
+        "response_body": {
+          "success": true,
+          "capacidad_pago": {
+            "ingreso_mensual": 3000,
+            "gastos_estimados": 2400,
+            "ingreso_disponible": 600,
+            "capacidad_endeudamiento": 360,
+            "ratio_endeudamiento": "12%",
+            "monto_maximo_aprobable": 18000,
+            "evaluacion": "RECHAZADO",
+            "motivo": "Monto solicitado excede la capacidad de pago",
+            "recomendacion": "Considere solicitar un monto menor o aumentar sus ingresos"
+          }
+        },
+        "tester_prompt": "Menciona que tus ingresos anuales son S/ 36,000, eres trabajador independiente y necesitas un préstamo de S/ 120,000."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cálculo exitoso de capacidad de pago",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "96000",
+          "estado_laboral": "empleado_dependiente",
+          "monto_solicitado": "80000"
+        },
+        "response_body": {
+          "success": true,
+          "capacidad_pago": {
+            "ingreso_mensual": 8000,
+            "gastos_estimados": 4800,
+            "ingreso_disponible": 3200,
+            "capacidad_endeudamiento": 1920,
+            "ratio_endeudamiento": "24%",
+            "monto_maximo_aprobable": 95000,
+            "cuota_maxima_mensual": 1920,
+            "evaluacion": "APROBADO",
+            "recomendacion": "El cliente tiene buena capacidad de pago para el monto solicitado"
+          }
+        },
+        "tester_prompt": "Dile al agente que tienes ingresos anuales de S/ 96,000, eres empleado dependiente y quieres un préstamo de S/ 80,000."
+      },
+      {
+        "scenario": "high_amount_request",
+        "description": "Solicitud de monto muy alto",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "180000",
+          "estado_laboral": "empleado_dependiente",
+          "monto_solicitado": "800000"
+        },
+        "response_body": {
+          "success": true,
+          "capacidad_pago": {
+            "ingreso_mensual": 15000,
+            "gastos_estimados": 9000,
+            "ingreso_disponible": 6000,
+            "capacidad_endeudamiento": 3600,
+            "ratio_endeudamiento": "24%",
+            "monto_maximo_aprobable": 350000,
+            "evaluacion": "PARCIALMENTE_APROBADO",
+            "monto_aprobado": 350000,
+            "recomendacion": "Monto solicitado excede límites. Se aprueba monto menor",
+            "requiere_garantias": true
+          }
+        },
+        "tester_prompt": "Menciona que tienes ingresos de S/ 180,000 anuales, eres empleado dependiente y quieres un préstamo de S/ 800,000."
+      },
+      {
+        "scenario": "unemployed_status",
+        "description": "Cliente desempleado",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "0",
+          "estado_laboral": "desempleado",
+          "monto_solicitado": "25000"
+        },
+        "response_body": {
+          "success": true,
+          "capacidad_pago": {
+            "ingreso_mensual": 0,
+            "evaluacion": "NO_ELEGIBLE",
+            "motivo": "Sin ingresos comprobables",
+            "alternativas": [
+              "Préstamo con aval",
+              "Préstamo prendario",
+              "Esperar hasta tener ingresos estables"
+            ],
+            "mensaje": "No es posible otorgar préstamos sin ingresos demostrables"
+          }
+        },
+        "tester_prompt": "Comenta que actualmente estás desempleado, sin ingresos, y necesitas un préstamo de S/ 25,000."
+      }
+    ],
+    "consultarClienteExistente": [
+      {
+        "scenario": "edge_case",
+        "description": "Cliente con score crediticio mínimo",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "18000",
+          "score_crediticio": "300"
+        },
+        "response_body": {
+          "success": true,
+          "cliente_encontrado": true,
+          "datos_cliente": {
+            "nombre": "Carlos Mendoza Silva",
+            "dni": "78945612",
+            "telefono": "956123789",
+            "email": "carlos.mendoza@hotmail.com",
+            "antiguedad_cliente": "2 años",
+            "productos_actuales": [
+              "Cuenta de Ahorros Básica"
+            ],
+            "historial_crediticio": "Regular",
+            "score_interno": 320,
+            "observaciones": "Requiere evaluación especial"
+          }
+        },
+        "tester_prompt": "Indica que tu ingreso anual es de S/ 18,000 y tu score crediticio es 300, y consulta sobre préstamos disponibles."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Cliente no encontrado en el sistema",
+        "response_status": 404,
+        "request_body": {
+          "ingreso_anual": "45000",
+          "score_crediticio": "680"
+        },
+        "response_body": {
+          "success": false,
+          "error_code": "CLIENT_NOT_FOUND",
+          "message": "No se encontró información del cliente en nuestros registros",
+          "recomendacion": "Debe registrarse como nuevo cliente para continuar con la evaluación"
+        },
+        "tester_prompt": "Menciona que tienes un ingreso anual de S/ 45,000 y score crediticio de 680, y pregunta por tu elegibilidad."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cliente existente con buen historial crediticio",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "85000",
+          "score_crediticio": "750"
+        },
+        "response_body": {
+          "success": true,
+          "cliente_encontrado": true,
+          "datos_cliente": {
+            "nombre": "María Elena Rodríguez Vásquez",
+            "dni": "45123789",
+            "telefono": "987654321",
+            "email": "maria.rodriguez@gmail.com",
+            "antiguedad_cliente": "5 años",
+            "productos_actuales": [
+              "Cuenta Corriente Premium",
+              "Tarjeta de Crédito Platinum"
+            ],
+            "historial_crediticio": "Excelente",
+            "score_interno": 785
+          }
+        },
+        "tester_prompt": "Dile al agente que tienes un ingreso anual de S/ 85,000 y un score crediticio de 750, y pregunta si eres cliente elegible."
+      },
+      {
+        "scenario": "high_income_client",
+        "description": "Cliente premium con ingresos altos",
+        "response_status": 200,
+        "request_body": {
+          "ingreso_anual": "250000",
+          "score_crediticio": "820"
+        },
+        "response_body": {
+          "success": true,
+          "cliente_encontrado": true,
+          "datos_cliente": {
+            "nombre": "Ana Sofía Guerrero Paredes",
+            "dni": "12345678",
+            "telefono": "998765432",
+            "email": "ana.guerrero@empresa.com",
+            "antiguedad_cliente": "8 años",
+            "productos_actuales": [
+              "Cuenta Corriente VIP",
+              "Tarjeta Black",
+              "Inversiones"
+            ],
+            "historial_crediticio": "Excelente",
+            "score_interno": 850,
+            "categoria_cliente": "Premium"
+          }
+        },
+        "tester_prompt": "Comenta que tu ingreso anual es de S/ 250,000 y tu score crediticio es 820, y pregunta qué préstamos puedes obtener."
+      },
+      {
+        "scenario": "system_timeout",
+        "description": "Timeout en la consulta del sistema",
+        "response_status": 408,
+        "request_body": {
+          "ingreso_anual": "65000",
+          "score_crediticio": "710"
+        },
+        "response_body": {
+          "success": false,
+          "error_code": "TIMEOUT_ERROR",
+          "message": "El sistema está experimentando demoras. Por favor intente nuevamente en unos minutos",
+          "tiempo_espera_sugerido": "2-3 minutos"
+        },
+        "tester_prompt": "Menciona que tienes ingresos de S/ 65,000 anuales y score de 710, y solicita información sobre tu elegibilidad."
+      }
+    ],
+    "consultarProductosPrestamos": [
+      {
+        "scenario": "edge_case",
+        "description": "Lista vacía de productos",
+        "response_status": 200,
+        "request_body": null,
+        "response_body": {
+          "success": true,
+          "productos": [],
+          "mensaje": "No hay productos de préstamos disponibles en este momento",
+          "fecha_actualizacion": "2024-01-15"
+        },
+        "tester_prompt": "Consulta sobre qué préstamos están disponibles actualmente en Interbank."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Error de servicio no disponible",
+        "response_status": 503,
+        "request_body": null,
+        "response_body": {
+          "success": false,
+          "error_code": "SERVICE_UNAVAILABLE",
+          "message": "El servicio de consulta de productos está temporalmente no disponible",
+          "tiempo_estimado_reparacion": "30 minutos"
+        },
+        "tester_prompt": "Solicita información sobre los productos de préstamos que ofrece el banco."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Lista completa de productos de préstamos disponibles",
+        "response_status": 200,
+        "request_body": null,
+        "response_body": {
+          "success": true,
+          "productos": [
+            {
+              "id": "PRES001",
+              "nombre": "Préstamo Personal Interbank",
+              "tasa_minima": "12.50%",
+              "tasa_maxima": "35.90%",
+              "monto_minimo": 3000,
+              "monto_maximo": 200000,
+              "plazo_minimo": 12,
+              "plazo_maximo": 72,
+              "requisitos": [
+                "Ingresos mínimos S/ 1,500",
+                "Antigüedad laboral 6 meses"
+              ]
+            },
+            {
+              "id": "PRES002",
+              "nombre": "Préstamo Hipotecario MiVivienda",
+              "tasa_minima": "8.90%",
+              "tasa_maxima": "12.50%",
+              "monto_minimo": 50000,
+              "monto_maximo": 2000000,
+              "plazo_minimo": 60,
+              "plazo_maximo": 300,
+              "requisitos": [
+                "Ingresos familiares demostrables",
+                "Cuota inicial 10%"
+              ]
+            }
+          ]
+        },
+        "tester_prompt": "Pregunta al agente qué tipos de préstamos tiene disponibles Interbank."
+      },
+      {
+        "scenario": "maintenance_mode",
+        "description": "Sistema en mantenimiento programado",
+        "response_status": 503,
+        "request_body": null,
+        "response_body": {
+          "success": false,
+          "error_code": "MAINTENANCE_MODE",
+          "message": "El sistema está en mantenimiento programado",
+          "horario_mantenimiento": "01:00 - 05:00 AM",
+          "proxima_disponibilidad": "05:00 AM"
+        },
+        "tester_prompt": "Pide al agente que te muestre los préstamos disponibles en el banco."
+      },
+      {
+        "scenario": "premium_products",
+        "description": "Productos exclusivos para clientes premium",
+        "response_status": 200,
+        "request_body": null,
+        "response_body": {
+          "success": true,
+          "productos": [
+            {
+              "id": "PRES003",
+              "nombre": "Préstamo Premium Exclusive",
+              "tasa_minima": "9.90%",
+              "tasa_maxima": "15.50%",
+              "monto_minimo": 50000,
+              "monto_maximo": 500000,
+              "plazo_minimo": 12,
+              "plazo_maximo": 84,
+              "requisitos": [
+                "Cliente Premium",
+                "Ingresos mínimos S/ 15,000"
+              ],
+              "beneficios": [
+                "Sin comisiones",
+                "Aprobación express"
+              ]
+            },
+            {
+              "id": "PRES004",
+              "nombre": "Línea de Crédito Empresarial",
+              "tasa_minima": "11.50%",
+              "tasa_maxima": "18.90%",
+              "monto_minimo": 100000,
+              "monto_maximo": 1000000,
+              "plazo_minimo": 24,
+              "plazo_maximo": 60
+            }
+          ]
+        },
+        "tester_prompt": "Pregunta sobre préstamos especiales o productos premium que tenga Interbank."
+      }
+    ],
+    "verificarPrestamoPreaprobado": [
+      {
+        "scenario": "edge_case",
+        "description": "Cliente ID no válido",
+        "response_status": 400,
+        "request_body": {
+          "cliente_id": "",
+          "score_crediticio": "700"
+        },
+        "response_body": {
+          "success": false,
+          "error_code": "INVALID_CLIENT_ID",
+          "message": "El ID de cliente proporcionado no es válido",
+          "detalles": "El campo cliente_id no puede estar vacío"
+        },
+        "tester_prompt": "Menciona que tu score crediticio es 700 pero no proporciones tu ID de cliente, y pregunta por preaprobaciones."
+      },
+      {
+        "scenario": "error_case",
+        "description": "Cliente sin preaprobaciones disponibles",
+        "response_status": 200,
+        "request_body": {
+          "cliente_id": "CLI123789",
+          "score_crediticio": "620"
+        },
+        "response_body": {
+          "success": true,
+          "preaprobado": false,
+          "motivo": "Score crediticio insuficiente para preaprobación automática",
+          "recomendaciones": [
+            "Mejorar historial crediticio",
+            "Aumentar ingresos declarados",
+            "Solicitar evaluación manual"
+          ],
+          "score_minimo_requerido": 650
+        },
+        "tester_prompt": "Indica que tu ID es CLI123789 y tu score crediticio es 620, y consulta si tienes algún préstamo preaprobado."
+      },
+      {
+        "scenario": "expired_preapproval",
+        "description": "Preaprobación vencida",
+        "response_status": 200,
+        "request_body": {
+          "cliente_id": "CLI456123",
+          "score_crediticio": "750"
+        },
+        "response_body": {
+          "success": true,
+          "preaprobado": false,
+          "motivo": "Preaprobación anterior venció",
+          "ultima_preaprobacion": {
+            "fecha_vencimiento": "2024-01-10",
+            "monto_anterior": 80000
+          },
+          "nueva_evaluacion_disponible": true,
+          "mensaje": "Puede solicitar una nueva evaluación para preaprobación"
+        },
+        "tester_prompt": "Comenta que tu ID es CLI456123 y score 750, y pregunta si tienes preaprobaciones vigentes."
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cliente con préstamo preaprobado",
+        "response_status": 200,
+        "request_body": {
+          "cliente_id": "CLI789456",
+          "score_crediticio": "780"
+        },
+        "response_body": {
+          "success": true,
+          "preaprobado": true,
+          "detalles_preaprobacion": {
+            "monto_preaprobado": 120000,
+            "tasa_ofrecida": "14.50%",
+            "plazo_maximo": 60,
+            "cuota_mensual_estimada": 2890,
+            "vigencia_preaprobacion": "30 días",
+            "codigo_preaprobacion": "PRE-2024-001234",
+            "condiciones": [
+              "Presentar últimas 3 boletas de pago",
+              "Certificado de ingresos"
+            ]
+          }
+        },
+        "tester_prompt": "Dile al agente que tu ID de cliente es CLI789456 y tu score crediticio es 780, y pregunta si tienes préstamos preaprobados."
+      },
+      {
+        "scenario": "multiple_preapprovals",
+        "description": "Cliente con múltiples preaprobaciones",
+        "response_status": 200,
+        "request_body": {
+          "cliente_id": "CLI999888",
+          "score_crediticio": "820"
+        },
+        "response_body": {
+          "success": true,
+          "preaprobado": true,
+          "preaprobaciones_disponibles": [
+            {
+              "tipo": "Préstamo Personal",
+              "monto": 150000,
+              "tasa": "12.90%",
+              "plazo_max": 72
+            },
+            {
+              "tipo": "Línea de Crédito",
+              "monto": 200000,
+              "tasa": "15.50%",
+              "disponibilidad": "Inmediata"
+            },
+            {
+              "tipo": "Préstamo Hipotecario",
+              "monto": 800000,
+              "tasa": "9.50%",
+              "plazo_max": 240
+            }
+          ],
+          "cliente_categoria": "VIP"
+        },
+        "tester_prompt": "Indica que tu ID de cliente es CLI999888 y tu score es 820, y pregunta qué préstamos tienes preaprobados."
+      }
+    ]
+  }
+}

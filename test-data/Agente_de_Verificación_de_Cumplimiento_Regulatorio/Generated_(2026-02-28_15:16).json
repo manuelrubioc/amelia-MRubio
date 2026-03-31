@@ -1,0 +1,333 @@
+{
+  "name": "Generated (2026-02-28 15:16)",
+  "description": "AI-generated mock data for AgenteComplianceRegulatorio",
+  "source_type": "generated",
+  "is_active": false,
+  "web_actions": {
+    "checkRegulatoryDatabase": [
+      {
+        "scenario": "edge_case",
+        "description": "Regulatory check with zero investment amount",
+        "response_status": 200,
+        "request_body": {
+          "customer_id": "CUS-PE-111222333",
+          "product_type": "CONSULTA",
+          "investment_amount": "0.00"
+        },
+        "response_body": {
+          "success": true,
+          "check_id": "REG-CHK-2024-001236",
+          "customer_id": "CUS-PE-111222333",
+          "status": "INFORMATIVO",
+          "compliance_score": null,
+          "checks_performed": {
+            "sbs_registry": "LIMPIO",
+            "uif_lists": "SIN_COINCIDENCIAS",
+            "pep_verification": "NO_PEP",
+            "sanctions_screening": "LIMPIO",
+            "adverse_media": "SIN_ALERTAS"
+          },
+          "risk_assessment": "NO_APLICA",
+          "recommended_action": "INFORMATIVO_SOLAMENTE",
+          "additional_requirements": [],
+          "alerts": [],
+          "valid_until": "2024-01-15T23:59:59Z",
+          "checked_at": "2024-01-15T14:35:12Z",
+          "checked_by": "SISTEMA_AUTOMATICO"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Regulatory check failed due to sanctions match",
+        "response_status": 200,
+        "request_body": {
+          "customer_id": "CUS-PE-555666777",
+          "product_type": "CUENTA_CORRIENTE",
+          "investment_amount": "50000.00"
+        },
+        "response_body": {
+          "success": true,
+          "check_id": "REG-CHK-2024-001235",
+          "customer_id": "CUS-PE-555666777",
+          "status": "RECHAZADO",
+          "compliance_score": 15,
+          "checks_performed": {
+            "sbs_registry": "LIMPIO",
+            "uif_lists": "COINCIDENCIA_PARCIAL",
+            "pep_verification": "NO_PEP",
+            "sanctions_screening": "COINCIDENCIA_ENCONTRADA",
+            "adverse_media": "ALERTAS_ENCONTRADAS"
+          },
+          "risk_assessment": "ALTO",
+          "recommended_action": "RECHAZAR_OPERACION",
+          "additional_requirements": [
+            "REVISION_MANUAL_OBLIGATORIA",
+            "DOCUMENTACION_ADICIONAL"
+          ],
+          "alerts": [
+            {
+              "type": "SANCTIONS_MATCH",
+              "description": "Coincidencia encontrada en lista OFAC",
+              "severity": "CRITICA"
+            }
+          ],
+          "valid_until": null,
+          "checked_at": "2024-01-15T14:30:45Z",
+          "checked_by": "SISTEMA_AUTOMATICO"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Successful regulatory check with approved status",
+        "response_status": 200,
+        "request_body": {
+          "customer_id": "CUS-PE-789456123",
+          "product_type": "FONDO_MUTUO",
+          "investment_amount": "25000.00"
+        },
+        "response_body": {
+          "success": true,
+          "check_id": "REG-CHK-2024-001234",
+          "customer_id": "CUS-PE-789456123",
+          "status": "APROBADO",
+          "compliance_score": 95,
+          "checks_performed": {
+            "sbs_registry": "LIMPIO",
+            "uif_lists": "SIN_COINCIDENCIAS",
+            "pep_verification": "NO_PEP",
+            "sanctions_screening": "LIMPIO",
+            "adverse_media": "SIN_ALERTAS"
+          },
+          "risk_assessment": "BAJO",
+          "recommended_action": "PROCEDER",
+          "additional_requirements": [],
+          "valid_until": "2024-07-15T23:59:59Z",
+          "checked_at": "2024-01-15T14:25:30Z",
+          "checked_by": "SISTEMA_AUTOMATICO"
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "getCustomerProfile": [
+      {
+        "scenario": "edge_case",
+        "description": "Customer profile with minimal required data only",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "success": true,
+          "customer": {
+            "id": "CUS-PE-000000001",
+            "name": "Juan Pérez",
+            "dni": "00000001",
+            "email": null,
+            "phone": null,
+            "address": "",
+            "birth_date": "1990-01-01",
+            "occupation": "",
+            "monthly_income": 0.0,
+            "account_opening_date": "2024-01-01",
+            "risk_profile": "NO_DEFINIDO",
+            "kyc_status": "PENDIENTE",
+            "pep_status": null,
+            "sanctions_check": "PENDIENTE",
+            "account_types": [],
+            "credit_score": null,
+            "last_update": "2024-01-01T00:00:00Z"
+          }
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Customer profile not found in system",
+        "response_status": 404,
+        "request_body": {},
+        "response_body": {
+          "success": false,
+          "error_code": "CUSTOMER_NOT_FOUND",
+          "message": "No se encontró el perfil del cliente en la base de datos",
+          "details": "El cliente puede no estar registrado o la sesión ha expirado"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Successful retrieval of customer profile with complete information",
+        "response_status": 200,
+        "request_body": {},
+        "response_body": {
+          "success": true,
+          "customer": {
+            "id": "CUS-PE-789456123",
+            "name": "María Elena Rodríguez Vargas",
+            "dni": "45123789",
+            "email": "maria.rodriguez@gmail.com",
+            "phone": "+51 987654321",
+            "address": "Av. Javier Prado Este 4200, San Borja, Lima",
+            "birth_date": "1985-03-15",
+            "occupation": "Ingeniera de Sistemas",
+            "monthly_income": 8500.0,
+            "account_opening_date": "2018-07-20",
+            "risk_profile": "MODERADO",
+            "kyc_status": "COMPLETO",
+            "pep_status": false,
+            "sanctions_check": "LIMPIO",
+            "account_types": [
+              "AHORROS",
+              "CORRIENTE"
+            ],
+            "credit_score": 750,
+            "last_update": "2024-01-15T10:30:00Z"
+          }
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "validateSbsCompliance": [
+      {
+        "scenario": "edge_case",
+        "description": "SBS compliance validation for minimum product amount",
+        "response_status": 200,
+        "request_body": {
+          "bank_code": "INTERBANK",
+          "customer_data": "{\"dni\": \"87654321\", \"name\": \"Ana Torres López\", \"income\": 1025.00}",
+          "product_details": "{\"type\": \"CUENTA_AHORROS\", \"amount\": 50.00, \"term_months\": 0}"
+        },
+        "response_body": {
+          "success": true,
+          "validation_id": "SBS-VAL-2024-567892",
+          "bank_code": "INTERBANK",
+          "sbs_status": "CUMPLE_MINIMO",
+          "compliance_details": {
+            "capital_requirements": "CUMPLE",
+            "liquidity_ratios": "CUMPLE",
+            "customer_protection": "CUMPLE",
+            "anti_money_laundering": "CUMPLE",
+            "know_your_customer": "CUMPLE"
+          },
+          "regulatory_limits": {
+            "individual_exposure": {
+              "limit": 30750.0,
+              "current": 0.0,
+              "available": 30750.0
+            },
+            "minimum_opening_balance": {
+              "required": 50.0,
+              "provided": 50.0
+            }
+          },
+          "required_disclosures": [
+            "COMISION_MANTENIMIENTO",
+            "TASA_INTERES_AHORROS"
+          ],
+          "special_conditions": [
+            "CUENTA_BASICA_SIN_COMISIONES",
+            "LIMITE_TRANSACCIONES_MENSUALES"
+          ],
+          "approval_conditions": [],
+          "valid_until": "2024-12-31T23:59:59Z",
+          "validated_at": "2024-01-15T15:20:10Z",
+          "sbs_reference": "SBS-REF-2024-INT-001236"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "SBS compliance validation failed due to regulatory limits exceeded",
+        "response_status": 200,
+        "request_body": {
+          "bank_code": "INTERBANK",
+          "customer_data": "{\"dni\": \"12345678\", \"name\": \"Carlos Mendoza Silva\", \"income\": 3500.00}",
+          "product_details": "{\"type\": \"CREDITO_PERSONAL\", \"amount\": 150000.00, \"term_months\": 60}"
+        },
+        "response_body": {
+          "success": false,
+          "validation_id": "SBS-VAL-2024-567891",
+          "bank_code": "INTERBANK",
+          "sbs_status": "NO_CUMPLE",
+          "compliance_details": {
+            "capital_requirements": "CUMPLE",
+            "liquidity_ratios": "CUMPLE",
+            "customer_protection": "NO_CUMPLE",
+            "anti_money_laundering": "CUMPLE",
+            "know_your_customer": "CUMPLE"
+          },
+          "violations": [
+            {
+              "code": "SBS-001",
+              "description": "Monto solicitado excede límite de endeudamiento permitido",
+              "severity": "CRITICA"
+            },
+            {
+              "code": "SBS-015",
+              "description": "Relación cuota-ingreso supera el 30% permitido",
+              "severity": "ALTA"
+            }
+          ],
+          "regulatory_limits": {
+            "individual_exposure": {
+              "limit": 105000.0,
+              "current": 0.0,
+              "requested": 150000.0
+            },
+            "debt_to_income_ratio": {
+              "limit": 0.3,
+              "calculated": 0.85
+            }
+          },
+          "required_actions": [
+            "REDUCIR_MONTO_SOLICITADO",
+            "PRESENTAR_GARANTIAS_ADICIONALES"
+          ],
+          "validated_at": "2024-01-15T15:15:45Z",
+          "sbs_reference": "SBS-REF-2024-INT-001235"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Successful SBS compliance validation with full approval",
+        "response_status": 200,
+        "request_body": {
+          "bank_code": "INTERBANK",
+          "customer_data": "{\"dni\": \"45123789\", \"name\": \"María Elena Rodríguez Vargas\", \"income\": 8500.00}",
+          "product_details": "{\"type\": \"DEPOSITO_PLAZO\", \"amount\": 15000.00, \"term_months\": 12}"
+        },
+        "response_body": {
+          "success": true,
+          "validation_id": "SBS-VAL-2024-567890",
+          "bank_code": "INTERBANK",
+          "sbs_status": "CUMPLE",
+          "compliance_details": {
+            "capital_requirements": "CUMPLE",
+            "liquidity_ratios": "CUMPLE",
+            "customer_protection": "CUMPLE",
+            "anti_money_laundering": "CUMPLE",
+            "know_your_customer": "CUMPLE"
+          },
+          "regulatory_limits": {
+            "individual_exposure": {
+              "limit": 50000.0,
+              "current": 15000.0,
+              "available": 35000.0
+            },
+            "product_restrictions": "NINGUNA"
+          },
+          "required_disclosures": [
+            "TASA_EFECTIVA_ANUAL",
+            "COMISIONES_APLICABLES",
+            "PENALIDADES_RETIRO_ANTICIPADO"
+          ],
+          "approval_conditions": [],
+          "valid_until": "2024-12-31T23:59:59Z",
+          "validated_at": "2024-01-15T15:10:20Z",
+          "sbs_reference": "SBS-REF-2024-INT-001234"
+        },
+        "tester_prompt": ""
+      }
+    ]
+  }
+}

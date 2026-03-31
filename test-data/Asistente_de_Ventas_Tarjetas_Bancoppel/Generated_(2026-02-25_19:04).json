@@ -1,0 +1,265 @@
+{
+  "name": "Generated (2026-02-25 19:04)",
+  "description": "AI-generated mock data for Bancoppel_Cards_Sales_Assistant - Sales Assistant",
+  "source_type": "generated",
+  "is_active": true,
+  "web_actions": {
+    "calcularBeneficios": [
+      {
+        "scenario": "edge_case",
+        "description": "Cálculo con gasto mensual mínimo",
+        "response_status": 200,
+        "request_body": {
+          "productId": "BC-BASIC-004",
+          "monthlySpending": "500"
+        },
+        "response_body": {
+          "ahorroAnualidad": "$0.00",
+          "cashbackAnual": "$60.00",
+          "puntosRecompensa": 60,
+          "detalleCalculos": {
+            "gastoAnual": "$6,000.00",
+            "cashbackSupermercados": "$30.00",
+            "cashbackGeneral": "$30.00",
+            "valorPuntos": "$60.00"
+          },
+          "resumenBeneficios": "Con un gasto mensual bajo de $500, los beneficios son limitados. Considere incrementar el uso de la tarjeta para maximizar recompensas"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Error por producto no encontrado",
+        "response_status": 404,
+        "request_body": {
+          "productId": "BC-INVALID-999",
+          "monthlySpending": "5000"
+        },
+        "response_body": {
+          "error": true,
+          "codigo": "PRODUCT_NOT_FOUND",
+          "mensaje": "El producto especificado no existe en nuestro catálogo",
+          "ahorroAnualidad": "$0.00",
+          "cashbackAnual": "$0.00",
+          "puntosRecompensa": 0
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Cálculo de beneficios para gasto mensual promedio",
+        "response_status": 200,
+        "request_body": {
+          "productId": "BC-GOLD-001",
+          "monthlySpending": "8500"
+        },
+        "response_body": {
+          "ahorroAnualidad": "$890.00",
+          "cashbackAnual": "$2,040.00",
+          "puntosRecompensa": 10200,
+          "detalleCalculos": {
+            "gastoAnual": "$102,000.00",
+            "cashbackSupermercados": "$1,530.00",
+            "cashbackGeneral": "$510.00",
+            "valorPuntos": "$1,020.00"
+          },
+          "resumenBeneficios": "Con un gasto mensual de $8,500, obtendrá $2,040 en cashback anual y 10,200 puntos recompensa"
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "consultarProductosTarjetas": [
+      {
+        "scenario": "edge_case",
+        "description": "Consulta con ingresos muy altos que exceden productos disponibles",
+        "response_status": 200,
+        "request_body": {
+          "cardType": "empresarial",
+          "incomeRange": "200000+"
+        },
+        "response_body": {
+          "productos": [],
+          "recomendacion": "Para su perfil de ingresos superiores a $200,000 pesos mensuales, le sugerimos contactar directamente con nuestro equipo de Banca Privada para productos personalizados."
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Error por rango de ingresos no válido",
+        "response_status": 400,
+        "request_body": {
+          "cardType": "debito",
+          "incomeRange": "5000-8000"
+        },
+        "response_body": {
+          "error": true,
+          "codigo": "INCOME_TOO_LOW",
+          "mensaje": "El rango de ingresos proporcionado no cumple con los requisitos mínimos para productos de crédito. Ingreso mínimo requerido: $10,000.00",
+          "productos": [],
+          "recomendacion": ""
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Consulta exitosa de productos de tarjetas para ingresos medios",
+        "response_status": 200,
+        "request_body": {
+          "cardType": "credito",
+          "incomeRange": "15000-30000"
+        },
+        "response_body": {
+          "productos": [
+            {
+              "id": "BC-GOLD-001",
+              "nombre": "Bancoppel Oro",
+              "tipoTarjeta": "Crédito",
+              "anualidad": "$890.00",
+              "tasaInteres": "42.9%",
+              "limiteCredito": "$45,000.00",
+              "beneficios": [
+                "2% cashback en supermercados",
+                "Sin anualidad primer año",
+                "Meses sin intereses en tiendas afiliadas"
+              ]
+            },
+            {
+              "id": "BC-PLAT-002",
+              "nombre": "Bancoppel Platino",
+              "tipoTarjeta": "Crédito",
+              "anualidad": "$1,490.00",
+              "tasaInteres": "39.9%",
+              "limiteCredito": "$80,000.00",
+              "beneficios": [
+                "3% cashback en gasolineras",
+                "Seguro de viaje",
+                "Acceso a salas VIP"
+              ]
+            }
+          ],
+          "recomendacion": "Para su perfil de ingresos, recomendamos la tarjeta Bancoppel Oro que ofrece excelentes beneficios sin comprometer su capacidad de pago."
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "evaluarPerfilCrediticio": [
+      {
+        "scenario": "edge_case",
+        "description": "Cliente sin historial crediticio previo",
+        "response_status": 200,
+        "request_body": {
+          "rfc": "LOPA001205ABC",
+          "curp": "LOPA001205HDFPRL09",
+          "monthlyIncome": "12000"
+        },
+        "response_body": {
+          "limiteAprobado": "$15,000.00",
+          "productosElegibles": [
+            "BC-BASIC-004"
+          ],
+          "scoreCredito": 0,
+          "evaluacion": "APROBADO_CONDICIONAL",
+          "observaciones": "Cliente sin historial crediticio. Límite inicial conservador con posibilidad de incremento tras 6 meses de buen comportamiento"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Rechazo por mal historial crediticio",
+        "response_status": 200,
+        "request_body": {
+          "rfc": "PEJI790820MDF",
+          "curp": "PEJI790820MDFRZN08",
+          "monthlyIncome": "18000"
+        },
+        "response_body": {
+          "limiteAprobado": "$0.00",
+          "productosElegibles": [],
+          "scoreCredito": 485,
+          "evaluacion": "RECHAZADO",
+          "observaciones": "Cliente presenta reportes negativos en Buró de Crédito. Se requiere mejorar historial crediticio antes de solicitar productos"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Evaluación exitosa de perfil crediticio con buen score",
+        "response_status": 200,
+        "request_body": {
+          "rfc": "GOME850315HDF",
+          "curp": "GOME850315HDFMRN04",
+          "monthlyIncome": "25000"
+        },
+        "response_body": {
+          "limiteAprobado": "$65,000.00",
+          "productosElegibles": [
+            "BC-GOLD-001",
+            "BC-PLAT-002",
+            "BC-CASH-003"
+          ],
+          "scoreCredito": 745,
+          "evaluacion": "APROBADO",
+          "observaciones": "Cliente con historial crediticio favorable y capacidad de pago comprobada"
+        },
+        "tester_prompt": ""
+      }
+    ],
+    "registrarLeadVentas": [
+      {
+        "scenario": "edge_case",
+        "description": "Registro de lead con calificación muy baja",
+        "response_status": 201,
+        "request_body": {
+          "contactInfo": "Pedro Ramírez - Tel: 5559876543 - Email: pedro.ramirez@email.com",
+          "interestedProduct": "BC-BASIC-004",
+          "qualificationScore": "D"
+        },
+        "response_body": {
+          "ejecutivoAsignado": "Lic. Ana Torres - Ext: 2951",
+          "fechaSeguimiento": "2024-01-22T14:00:00-06:00",
+          "numeroReferencia": "REF-BC-20240115-001235",
+          "sucursalAsignada": "Bancoppel Centro",
+          "proximosPasos": "Debido a la calificación, se programará seguimiento en 5 días hábiles para evaluar opciones de productos básicos y mejora de perfil crediticio"
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "error_case",
+        "description": "Error por datos de contacto incompletos",
+        "response_status": 400,
+        "request_body": {
+          "contactInfo": "Juan - Tel: 555",
+          "interestedProduct": "BC-PLAT-002",
+          "qualificationScore": "C"
+        },
+        "response_body": {
+          "error": true,
+          "codigo": "INVALID_CONTACT_INFO",
+          "mensaje": "Los datos de contacto proporcionados son incompletos. Se requiere nombre completo, teléfono válido y email",
+          "ejecutivoAsignado": "",
+          "fechaSeguimiento": "",
+          "numeroReferencia": ""
+        },
+        "tester_prompt": ""
+      },
+      {
+        "scenario": "happy_path",
+        "description": "Registro exitoso de lead con alta calificación",
+        "response_status": 201,
+        "request_body": {
+          "contactInfo": "María González - Tel: 5551234567 - Email: maria.gonzalez@email.com",
+          "interestedProduct": "BC-GOLD-001",
+          "qualificationScore": "A"
+        },
+        "response_body": {
+          "ejecutivoAsignado": "Lic. Carlos Mendoza - Ext: 2847",
+          "fechaSeguimiento": "2024-01-18T10:00:00-06:00",
+          "numeroReferencia": "REF-BC-20240115-001234",
+          "sucursalAsignada": "Bancoppel Insurgentes Sur",
+          "proximosPasos": "El ejecutivo se comunicará dentro de 24 horas para agendar cita y completar la solicitud"
+        },
+        "tester_prompt": ""
+      }
+    ]
+  }
+}

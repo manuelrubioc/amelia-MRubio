@@ -1,12 +1,13 @@
 {
   "domain_code": "mrubio",
-  "published_at": "2026-03-31T01:52:38.324195+00:00",
-  "file_count": 20,
+  "published_at": "2026-03-31T02:52:05.578432+00:00",
+  "file_count": 61,
   "categories": {
     "amelia": 3,
-    "docs": 3,
+    "docs": 34,
     "library": 0,
-    "support": 14,
+    "support": 7,
+    "test_data": 17,
     "scripts": 0
   }
 }

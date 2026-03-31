@@ -2,15 +2,35 @@
 
 Agente inteligente para la clasificación y gestión inicial de quejas en redes sociales y disputas con análisis de imágenes para optimizar la resolución de casos
 
-## Overview
+## Metadata
 
 | Field | Value |
-|---|---|
+|-------|-------|
+| Type | experimental |
+| Status | DEPLOYED |
+| Execution Mode | conversational |
+| Domain | mrubio |
+| Languages | es-MX |
+| Amelia Deploy Status | DEPLOYED |
+
+## Personality
+
+| Setting | Value |
+|---------|-------|
+| type | FIXED |
+| levelOfDetail | DETAILED |
+| communicationTone | BALANCED |
+| expressionStyle | PRECISE |
+
+## Forge Context
+
+| Field | Value |
+|-------|-------|
 | Industry | logistics |
 | Country | mx |
 | Use Case | complaint_handling |
 | Channels | webchat |
-| Domain | mrubio |
+| Company | Rappi |
 
 2 business opportunities. In both cases, the idea is to reduce the amount of tickets handled by humans so the interest is to have AI as the first layer and have a smooth transition to agents when the Ai cannot solve the case:
 
@@ -18,13 +38,20 @@ AI for social media support — specifically to classify incoming interactions a
 AI for dispute management — with a focus on image recognition and identification 
 
 
-### Additional Context
+## Additional Context
 
 Purpose
 To define the scope for preparing and delivering a targeted AI solution demo aligned to client’s current tooling, operational workflows, and defined success criteria.
 
 Background
 Client is looking for a AI solution like Hive AI for the Dispute process - where photo analysis can be done to support compensation decision-making following customer complaints e.g not served the correct food item. ordered. They are also seeking help with AI-driven solutions for social media support or dispute resolution - to identify whether it is a noise vs Actual case (seeking help) AI that can create cases that are Actual tickets and seamlessly escalating to human agents when required.
+
+## Deployment
+
+**Deployed at:** 2026-03-30T02:43:09.906659
+**Deploy Version:** 2
+
+{"forge_id": 8, "environment": "us.demo1.amelia", "domain_code": "mrubio", "agent_imported": true, "functions_imported": 4, "flows_imported": 0, "web_actions_created": 0, "web_actions_updated": 4, "functions_deleted": 0, "web_actions_deleted": 0, "warnings": [], "errors": []}
 
 ## Instruction
 
@@ -83,20 +110,21 @@ AMELIA: Por supuesto. He escalado tu caso #T456 a nuestro equipo especializado. 
 
 ## Post Processes
 
-- **default** (Default: Yes): Revisa que todas las respuestas mantengan el tono de marca Rappi: cercano, solutivo y profesional. Si se escaló el caso, confirma que se proporcionó el número de ticket al cliente.
+### Channel: default *(default)*
+
+Revisa que todas las respuestas mantengan el tono de marca Rappi: cercano, solutivo y profesional. Si se escaló el caso, confirma que se proporcionó el número de ticket al cliente.
 
 ## Functions
 
-### clasificarInteraccionSocial (enabled)
-
-### analizarImagenDisputa (enabled)
-
-### consultarDetallesPedido (enabled)
-
-### crearTicketSoporte (enabled)
+| Function | Status | Action Type | Description |
+|----------|--------|-------------|-------------|
+| `clasificarInteraccionSocial` | Enabled | - |  |
+| `analizarImagenDisputa` | Enabled | - |  |
+| `consultarDetallesPedido` | Enabled | - |  |
+| `crearTicketSoporte` | Enabled | - |  |
 
 ## Knowledge Collections
 
-- Base de Conocimientos Rappi
-- Políticas de Compensación
-- Procedimientos de Escalación
+- **Base de Conocimientos Rappi** (0 documents)
+- **Políticas de Compensación** (0 documents)
+- **Procedimientos de Escalación** (0 documents)
